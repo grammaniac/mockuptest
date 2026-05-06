@@ -1,0 +1,1358 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GRE Verbal Mock Test — 2026-04-22 17회</title>
+<style>
+  :root {
+    --bg: #f7f5f0;
+    --paper: #ffffff;
+    --ink: #1a1a1a;
+    --ink-soft: #555;
+    --ink-mute: #888;
+    --line: #d8d4ca;
+    --line-soft: #e8e5dd;
+    --accent: #1f3a5f;
+    --accent-soft: #e8eef5;
+    --correct: #2d6a4f;
+    --wrong: #b03a2e;
+    --warn: #c0392b;
+    --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    height: 100%;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Charter', 'Iowan Old Style', 'Palatino', 'Georgia', serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(31,58,95,0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 90%, rgba(31,58,95,0.03) 0%, transparent 50%);
+    min-height: 100vh;
+  }
+  /* === Header === */
+  .topbar {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--paper); border-bottom: 1px solid var(--line);
+    padding: 14px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  }
+  .topbar-left { font-size: 13px; color: var(--ink-soft); letter-spacing: 0.02em; }
+  .topbar-left .label { color: var(--ink-mute); margin-right: 6px; }
+  .topbar-left .value { color: var(--ink); font-weight: 600; }
+  .timer {
+    font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+    font-size: 22px; font-weight: 600; color: var(--accent);
+    letter-spacing: 0.05em; padding: 6px 14px;
+    background: var(--accent-soft); border-radius: 4px;
+    min-width: 110px; text-align: center;
+  }
+  .timer.warning { color: var(--warn); background: #fdecea; animation: pulse 1s ease-in-out infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+  .progress-bar { height: 3px; background: var(--line-soft); }
+  .progress-fill { height: 100%; background: var(--accent); transition: width 0.3s ease; }
+  /* === Main === */
+  main { max-width: 1100px; margin: 0 auto; padding: 36px 28px 120px; }
+  /* === Start Screen === */
+  .start-screen { text-align: center; padding: 80px 20px; }
+  .start-screen .eyebrow {
+    font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--ink-mute); margin-bottom: 24px;
+    font-family: -apple-system, sans-serif;
+  }
+  .start-screen h1 { font-size: 42px; font-weight: 400; line-height: 1.2; margin-bottom: 12px; letter-spacing: -0.01em; }
+  .start-screen .round { font-size: 18px; color: var(--ink-soft); margin-bottom: 48px; font-style: italic; }
+  .start-info {
+    background: var(--paper); border: 1px solid var(--line); border-radius: 6px;
+    padding: 32px 40px; max-width: 520px; margin: 0 auto 40px; text-align: left;
+    box-shadow: var(--shadow);
+  }
+  .start-info-row {
+    display: flex; justify-content: space-between; padding: 12px 0;
+    border-bottom: 1px solid var(--line-soft);
+    font-family: -apple-system, sans-serif; font-size: 14px;
+  }
+  .start-info-row:last-child { border-bottom: none; }
+  .start-info-row .k { color: var(--ink-mute); }
+  .start-info-row .v { color: var(--ink); font-weight: 500; }
+  .start-instructions {
+    max-width: 520px; margin: 0 auto 40px; text-align: left;
+    font-size: 14px; color: var(--ink-soft); line-height: 1.7;
+    font-family: -apple-system, sans-serif;
+  }
+  .start-instructions ul { padding-left: 22px; }
+  .start-instructions li { margin-bottom: 6px; }
+  /* === Buttons === */
+  .btn {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    font-size: 14px; font-weight: 500; letter-spacing: 0.02em;
+    padding: 11px 22px; border: 1px solid var(--line);
+    background: var(--paper); color: var(--ink); border-radius: 4px;
+    cursor: pointer; transition: all 0.15s ease;
+  }
+  .btn:hover:not(:disabled) { border-color: var(--ink); background: #fafaf7; }
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .btn-primary:hover:not(:disabled) { background: #15294a; border-color: #15294a; }
+  .btn-finish { background: var(--correct); color: #fff; border-color: var(--correct); }
+  .btn-finish:hover:not(:disabled) { background: #1d4d39; border-color: #1d4d39; }
+  .btn-large { font-size: 16px; padding: 14px 36px; }
+  /* === Section Intro === */
+  .section-intro {
+    max-width: 600px; margin: 80px auto; text-align: center;
+    background: var(--paper); border: 1px solid var(--line); border-radius: 6px;
+    padding: 56px 48px; box-shadow: var(--shadow);
+  }
+  .section-intro .num {
+    font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--ink-mute); margin-bottom: 16px; font-family: -apple-system, sans-serif;
+  }
+  .section-intro h2 { font-size: 32px; font-weight: 400; margin-bottom: 24px; }
+  .section-intro .meta { font-size: 15px; color: var(--ink-soft); margin-bottom: 36px; line-height: 1.8; font-family: -apple-system, sans-serif; }
+  /* === Question Screen === */
+  .question-meta {
+    font-family: -apple-system, sans-serif; font-size: 12px;
+    color: var(--ink-mute); text-transform: uppercase; letter-spacing: 0.15em;
+    margin-bottom: 18px; display: flex; align-items: center; gap: 12px;
+  }
+  .question-meta .qtype {
+    background: var(--ink); color: var(--paper);
+    padding: 3px 10px; border-radius: 3px; font-size: 11px;
+  }
+  .layout-rc { display: grid; grid-template-columns: 1.1fr 1fr; gap: 36px; align-items: start; }
+  .passage {
+    background: var(--paper); border: 1px solid var(--line);
+    border-left: 3px solid var(--accent); border-radius: 4px;
+    padding: 28px 32px; max-height: 70vh; overflow-y: auto;
+    font-size: 15.5px; line-height: 1.8; box-shadow: var(--shadow);
+    position: sticky; top: 90px;
+  }
+  .passage::-webkit-scrollbar { width: 8px; }
+  .passage::-webkit-scrollbar-thumb { background: var(--line); border-radius: 4px; }
+  .passage .passage-label {
+    font-family: -apple-system, sans-serif; font-size: 11px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--ink-mute); margin-bottom: 14px;
+  }
+  .passage p { margin-bottom: 12px; text-align: justify; }
+  .passage p:last-child { margin-bottom: 0; }
+  .passage .highlighted { background: #fff3cd; padding: 1px 2px; }
+  .question-body {
+    background: var(--paper); border: 1px solid var(--line);
+    border-radius: 4px; padding: 32px 36px; box-shadow: var(--shadow);
+  }
+  .question-text { font-size: 16.5px; line-height: 1.7; margin-bottom: 24px; font-weight: 500; }
+  .stimulus {
+    background: #fafaf7; border-left: 3px solid var(--ink-mute);
+    padding: 18px 22px; margin-bottom: 22px; font-size: 15.5px;
+    line-height: 1.7; border-radius: 0 4px 4px 0;
+  }
+  .directions { font-size: 13.5px; color: var(--ink-soft); font-style: italic; margin-bottom: 16px; font-family: -apple-system, sans-serif; }
+  /* === Choices === */
+  .choices { list-style: none; }
+  .choice {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 12px 14px; margin-bottom: 6px;
+    border: 1px solid transparent; border-radius: 4px;
+    cursor: pointer; transition: all 0.12s ease;
+    font-size: 15.5px; line-height: 1.6;
+  }
+  .choice:hover { background: #faf9f4; }
+  .choice.selected { background: var(--accent-soft); border-color: var(--accent); }
+  .choice input { margin-top: 5px; flex-shrink: 0; cursor: pointer; accent-color: var(--accent); }
+  .choice .label { font-family: -apple-system, sans-serif; font-weight: 600; color: var(--accent); margin-right: 4px; }
+  /* TC Multi-blank GRID */
+  div.tc-grid { display: grid !important; gap: 20px; margin-top: 8px; width: 100%; }
+  div.tc-grid.cols-2 { grid-template-columns: 1fr 1fr !important; }
+  div.tc-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr !important; }
+  .tc-column {
+    border: 1px solid var(--line); border-radius: 4px;
+    padding: 16px 14px; background: #fafaf7; min-width: 0;
+  }
+  .tc-column-header {
+    font-family: -apple-system, sans-serif; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.18em;
+    color: var(--ink-mute); font-weight: 700; text-align: center;
+    padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px solid var(--line);
+  }
+  .tc-column .choices { margin: 0; }
+  .tc-column .choice {
+    background: var(--paper); padding: 10px 12px;
+    margin-bottom: 6px; font-size: 14.5px;
+  }
+  .tc-column .choice:last-child { margin-bottom: 0; }
+  .tc-column .choice .label { display: none; }
+  .se-warning {
+    font-family: -apple-system, sans-serif; font-size: 13px;
+    color: var(--warn); margin-top: 12px; padding: 8px 12px;
+    background: #fdecea; border-radius: 4px; display: none;
+  }
+  .se-warning.show { display: block; }
+  /* === Footer Nav === */
+  .footer-nav {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: var(--paper); border-top: 1px solid var(--line);
+    padding: 16px 28px; display: flex;
+    justify-content: space-between; align-items: center;
+    z-index: 5; box-shadow: 0 -2px 10px rgba(0,0,0,0.03);
+  }
+  .footer-nav .nav-group { display: flex; gap: 10px; }
+  /* === Modal === */
+  .modal-backdrop {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+    display: none; align-items: center; justify-content: center; z-index: 100;
+  }
+  .modal-backdrop.show { display: flex; }
+  .modal {
+    background: var(--paper); border-radius: 6px; padding: 36px 40px;
+    max-width: 460px; width: 90%; text-align: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  }
+  .modal h3 { font-size: 20px; margin-bottom: 14px; font-weight: 500; }
+  .modal p { font-size: 14.5px; color: var(--ink-soft); margin-bottom: 28px; font-family: -apple-system, sans-serif; line-height: 1.6; }
+  .modal .modal-actions { display: flex; gap: 10px; justify-content: center; }
+  /* === Results === */
+  .results { max-width: 900px; margin: 0 auto; }
+  .results-header { text-align: center; margin-bottom: 48px; }
+  .results-header .eyebrow {
+    font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--ink-mute); margin-bottom: 16px; font-family: -apple-system, sans-serif;
+  }
+  .results-header h2 { font-size: 38px; font-weight: 400; margin-bottom: 8px; }
+  .score-card {
+    background: var(--paper); border: 1px solid var(--line); border-radius: 6px;
+    padding: 40px; margin-bottom: 32px;
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px;
+    text-align: center; box-shadow: var(--shadow);
+  }
+  .score-cell .label {
+    font-family: -apple-system, sans-serif; font-size: 12px;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--ink-mute); margin-bottom: 12px;
+  }
+  .score-cell .value { font-size: 48px; font-weight: 300; color: var(--accent); line-height: 1; }
+  .score-cell .value .total { font-size: 22px; color: var(--ink-mute); font-weight: 400; }
+  .score-cell .sub { font-family: -apple-system, sans-serif; font-size: 13px; color: var(--ink-soft); margin-top: 8px; }
+  .results-table {
+    background: var(--paper); border: 1px solid var(--line); border-radius: 6px;
+    overflow: hidden; margin-bottom: 32px; box-shadow: var(--shadow);
+  }
+  .results-table table { width: 100%; border-collapse: collapse; font-family: -apple-system, sans-serif; font-size: 14px; }
+  .results-table th {
+    background: #fafaf7; padding: 14px 16px; text-align: left;
+    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-mute); font-weight: 600; border-bottom: 1px solid var(--line);
+  }
+  .results-table td { padding: 12px 16px; border-bottom: 1px solid var(--line-soft); vertical-align: middle; }
+  .results-table tr:last-child td { border-bottom: none; }
+  .results-table tr.section-divider td {
+    background: var(--accent-soft); color: var(--accent);
+    font-weight: 600; font-size: 12px; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 10px 16px;
+  }
+  .mark-correct { color: var(--correct); font-weight: 600; }
+  .mark-wrong { color: var(--wrong); font-weight: 600; }
+  .mark-skip { color: var(--ink-mute); }
+  .results-actions { text-align: center; margin-top: 40px; display: flex; gap: 12px; justify-content: center; }
+  @media (max-width: 860px) {
+    .layout-rc { grid-template-columns: 1fr; }
+    .passage { position: static; max-height: none; }
+    .score-card { grid-template-columns: 1fr; gap: 20px; }
+    main { padding: 24px 16px 120px; }
+    .start-screen h1 { font-size: 32px; }
+  }
+  @media (max-width: 600px) {
+    div.tc-grid.cols-2, div.tc-grid.cols-3 { grid-template-columns: 1fr !important; }
+  }
+  @media print {
+    .footer-nav, .topbar { display: none; }
+    body { background: white; }
+    .results-table { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="modal-backdrop" id="modal">
+  <div class="modal">
+    <h3 id="modal-title"></h3>
+    <p id="modal-message"></p>
+    <div class="modal-actions">
+      <button class="btn" id="modal-cancel">취소</button>
+      <button class="btn btn-primary" id="modal-confirm">확인</button>
+    </div>
+  </div>
+</div>
+<script>
+const examData = {
+  title: "GRE Verbal Reasoning Mock Practice Test",
+  date: "2026-04-22",
+  round: "17회",
+  scoringFormula: { multiplier: 1.481, base: 130 },
+  sections: [
+    {
+      number: 1,
+      timeLimit: 18,
+      questions: [
+        {
+          id: "S1-Q1",
+          type: "CR",
+          stimulus: "Some anthropologists study modern-day societies of foragers in an effort to learn about our ancient ancestors who were also foragers. A flaw in this strategy is that forager societies are extremely varied. Indeed, any forager society with which anthropologists are familiar has had considerable contact with modern nonforager societies.",
+          questionText: "Which of the following, if true, would most weaken the criticism made above of the anthropologists\u2019 strategy?",
+          choices: [
+            { label: "A", text: "All forager societies throughout history have had a number of important features in common that are absent from other types of societies." },
+            { label: "B", text: "Most ancient forager societies either dissolved or made a transition to another way of life." },
+            { label: "C", text: "All anthropologists study one kind or another of modern-day society." },
+            { label: "D", text: "Many anthropologists who study modern-day forager societies do not draw inferences about ancient societies on the basis of their studies." },
+            { label: "E", text: "Even those modern-day forager societies that have not had significant contact with modern societies are importantly different from ancient forager societies." }
+          ],
+          answer: ["A"]
+        },
+        {
+          id: "S1-Q2",
+          type: "RC_SINGLE",
+          passageGroupId: "S1G1",
+          passage: "Between 2500 and 2000 B.C., numerous statues representing real, historical people were produced in southern Mesopotamia. In the standard Western division of genres, mimetic resemblance is the first criterion of portraiture. However, the Mesopotamian images are portraits in that they represent individuals even though they do not mimetically imitate the individual\u2019s features. These statues were to be placed in temples where they stood in for the individual as a worshipper and could function as form of presence of that individual. They were therefore linked to the person in ways even closer than the modern notion of portrait, since the person\u2019s essence continued to exist in the image: numerous ancient texts demonstrate that images, for the Mesopotamians, had agency and were therefore powerful objects.",
+          questionText: "The author of the passage mentions \u201cnumerous ancient texts\u201d primarily in order to",
+          choices: [
+            { label: "A", text: "support contention about how Mesopotamians\u2019 attitudes toward the statues differed from modern notions of portraiture" },
+            { label: "B", text: "identify source for information about what kinds of images the Mesopotamians considered to be portraiture" },
+            { label: "C", text: "explain how modern scholars know that the statues were intended to be placed in temples" },
+            { label: "D", text: "argue that the standard Western division of genres is too recently developed for it to be applied appropriately to the statues" },
+            { label: "E", text: "defend the notion that the statues were made as representations of real, historical people" }
+          ],
+          answer: ["A"]
+        },
+        {
+          id: "S1-Q3",
+          type: "RC_MULTI",
+          passageGroupId: "S1G1",
+          passage: "Between 2500 and 2000 B.C., numerous statues representing real, historical people were produced in southern Mesopotamia. In the standard Western division of genres, mimetic resemblance is the first criterion of portraiture. However, the Mesopotamian images are portraits in that they represent individuals even though they do not mimetically imitate the individual\u2019s features. These statues were to be placed in temples where they stood in for the individual as a worshipper and could function as form of presence of that individual. They were therefore linked to the person in ways even closer than the modern notion of portrait, since the person\u2019s essence continued to exist in the image: numerous ancient texts demonstrate that images, for the Mesopotamians, had agency and were therefore powerful objects.",
+          directions: "Consider each of the choices separately and select all that apply.",
+          questionText: "The passage states which of the following about the Mesopotamian statues?",
+          choices: [
+            { label: "A", text: "They lack mimetic resemblance to their historical subjects." },
+            { label: "B", text: "They had a religious function for the individuals represented." },
+            { label: "C", text: "Their uniformity makes it impossible to link the statues with specific individuals." }
+          ],
+          answer: ["A", "B"]
+        },
+        {
+          id: "S1-Q4",
+          type: "RC_SINGLE",
+          passageGroupId: "S1G2",
+          passage: "Availability and management of water greatly influenced human settlement in the Maya Lowlands, and much of Mayan social innovation was centered on storing excess water for times of need. In northern Yucatan the permanent water table is sufficiently shallow that it can be accessed by natural wells known as cenotes. However, over much of the Maya Lowlands, the water table is too deep to have been available to the Maya. In response, they constructed artificial reservoirs to trap runoff. For example, Gallopin estimates that the reservoirs at Tikal (an ancient Mayan city) could have provided for the domestic needs of about 9,600 people for a period of 6 to 18 months. Even with elaborate water capture and management systems, the Maya were greatly dependent upon adequate rainfall over much of their empire and were thus susceptible to frequent or prolonged droughts that approached or exceeded the capacity of their reservoirs. In fact, evidence of droughts in the region based on studies of lake and shallow ocean sediments has led many researchers to suspect that climate was responsible for the Classic Maya collapse.",
+          questionText: "The author mentions \u201cstudies of lake and shallow ocean sediments\u201d primarily in order to",
+          choices: [
+            { label: "A", text: "describe the results of a novel study" },
+            { label: "B", text: "identify the source of evidence that suggested a hypothesis" },
+            { label: "C", text: "undermine a conventional explanation" },
+            { label: "D", text: "highlight the importance of one type of evidence" },
+            { label: "E", text: "clarify the value of a particular undertaking" }
+          ],
+          answer: ["B"]
+        },
+        {
+          id: "S1-Q5",
+          type: "RC_SINGLE",
+          passageGroupId: "S1G2",
+          passage: "Availability and management of water greatly influenced human settlement in the Maya Lowlands, and much of Mayan social innovation was centered on storing excess water for times of need. In northern Yucatan the permanent water table is sufficiently shallow that it can be accessed by natural wells known as cenotes. However, over much of the Maya Lowlands, the water table is too deep to have been available to the Maya. In response, they constructed artificial reservoirs to trap runoff. For example, Gallopin estimates that the reservoirs at Tikal (an ancient Mayan city) could have provided for the domestic needs of about 9,600 people for a period of 6 to 18 months. Even with elaborate water capture and management systems, the Maya were greatly dependent upon adequate rainfall over much of their empire and were thus susceptible to frequent or prolonged droughts that approached or exceeded the capacity of their reservoirs. In fact, evidence of droughts in the region based on studies of lake and shallow ocean sediments has led many researchers to suspect that climate was responsible for the Classic Maya collapse.",
+          questionText: "The passage suggests which of the following about the reservoirs at Tikal?",
+          choices: [
+            { label: "A", text: "They may have been designed by people from northern Yucatan." },
+            { label: "B", text: "They may have hastened the Classic Maya collapse." },
+            { label: "C", text: "They were insufficient to protect the Maya against some lingering droughts." },
+            { label: "D", text: "They were more effective than the cenotes found in northern Yucatan." },
+            { label: "E", text: "They formed a basis for certain Mayan cultural traditions." }
+          ],
+          answer: ["C"]
+        },
+        {
+          id: "S1-Q6",
+          type: "RC_SINGLE",
+          passageGroupId: "S1G2",
+          passage: "Availability and management of water greatly influenced human settlement in the Maya Lowlands, and much of Mayan social innovation was centered on storing excess water for times of need. In northern Yucatan the permanent water table is sufficiently shallow that it can be accessed by natural wells known as cenotes. However, over much of the Maya Lowlands, the water table is too deep to have been available to the Maya. In response, they constructed artificial reservoirs to trap runoff. For example, Gallopin estimates that the reservoirs at Tikal (an ancient Mayan city) could have provided for the domestic needs of about 9,600 people for a period of 6 to 18 months. Even with elaborate water capture and management systems, the Maya were greatly dependent upon adequate rainfall over much of their empire and were thus susceptible to frequent or prolonged droughts that approached or exceeded the capacity of their reservoirs. In fact, evidence of droughts in the region based on studies of lake and shallow ocean sediments has led many researchers to suspect that climate was responsible for the Classic Maya collapse.",
+          questionText: "The passage suggests which of the following about cenotes?",
+          choices: [
+            { label: "A", text: "They allowed people in northern Yucatan to avoid dependence on artificial reservoirs." },
+            { label: "B", text: "They were less capacious than the artificial reservoirs found in the Maya Lowlands." },
+            { label: "C", text: "They helped protect people in the Maya Lowlands from prolonged droughts." },
+            { label: "D", text: "They allowed the Maya to store excess water for times of need." },
+            { label: "E", text: "They were an important Mayan social innovation." }
+          ],
+          answer: ["A"]
+        },
+        {
+          id: "S1-Q7",
+          type: "TC",
+          questionText: "According to one political theorist, a regime that has as its goal absolute autonomy, without any __________ law or principle, has declared war on justice.",
+          blanks: [
+            {
+              id: "i",
+              choices: [
+                { text: "deviation from" },
+                { text: "suppression of" },
+                { text: "accountability to" },
+                { text: "contempt against" },
+                { text: "codification of" }
+              ]
+            }
+          ],
+          answer: ["accountability to"]
+        },
+        {
+          id: "S1-Q8",
+          type: "TC",
+          questionText: "Although its (i)__________ is (ii)__________, the musical style known as \u201cragtime\u201d has most often been described as an amalgamation of African American music with European forms.",
+          blanks: [
+            {
+              id: "i",
+              choices: [
+                { text: "artistic diversity" },
+                { text: "commercial appeal" },
+                { text: "precise definition" }
+              ]
+            },
+            {
+              id: "ii",
+              choices: [
+                { text: "exogenous" },
+                { text: "settled" },
+                { text: "elusive" }
+              ]
+            }
+          ],
+          answer: ["precise definition", "elusive"]
+        },
+        {
+          id: "S1-Q9",
+          type: "TC",
+          questionText: "When there is less natural dust blowing into eastern China, the air quality for millions of people there (i)__________: natural dust plays an important role in determining air temperatures and thereby promotes winds to (ii)__________ human-made pollution. Less natural dust, therefore, means the air becomes (iii)__________, with pollution becoming more concentrated and sticking around longer.",
+          blanks: [
+            {
+              id: "i",
+              choices: [
+                { text: "worsens" },
+                { text: "fluctuates" },
+                { text: "improves" }
+              ]
+            },
+            {
+              id: "ii",
+              choices: [
+                { text: "accumulate" },
+                { text: "exacerbate" },
+                { text: "disperse" }
+              ]
+            },
+            {
+              id: "iii",
+              choices: [
+                { text: "more unsettled" },
+                { text: "increasingly stagnant" },
+                { text: "less stable" }
+              ]
+            }
+          ],
+          answer: ["worsens", "disperse", "increasingly stagnant"]
+        },
+        {
+          id: "S1-Q10",
+          type: "SE",
+          questionText: "In a strong indication of the way the entire party is __________ the candidate with moderate credentials, the outspokenly conservative former mayor of a major city has promised to raise a substantial amount of money for the candidate\u2019s campaign.",
+          choices: [
+            { label: "A", text: "rallying behind" },
+            { label: "B", text: "incensed over" },
+            { label: "C", text: "undecided about" },
+            { label: "D", text: "mortified over" },
+            { label: "E", text: "embarrassed about" },
+            { label: "F", text: "coalescing around" }
+          ],
+          answer: ["A", "F"]
+        },
+        {
+          id: "S1-Q11",
+          type: "SE",
+          questionText: "While some mummies, those of Egyptian pharaohs for example, were intentionally preserved with substances such as natron to dry out the bodies and prevent decomposition, others, such as the Tarim mummies found in present-day Xinjian, China, were __________ naturally by the searing desert conditions.",
+          choices: [
+            { label: "A", text: "smelted" },
+            { label: "B", text: "disinterred" },
+            { label: "C", text: "espied" },
+            { label: "D", text: "vitiated" },
+            { label: "E", text: "exsiccated" },
+            { label: "F", text: "dehydrated" }
+          ],
+          answer: ["E", "F"]
+        },
+        {
+          id: "S1-Q12",
+          type: "SE",
+          questionText: "Even though some governments are now expressing alarm over their nations\u2019 __________ birth rates, the planetary threat of human overpopulation has not ceased to concern many scientists and environmentalists.",
+          choices: [
+            { label: "A", text: "fluctuating" },
+            { label: "B", text: "incommensurate" },
+            { label: "C", text: "burgeoning" },
+            { label: "D", text: "flagging" },
+            { label: "E", text: "thriving" },
+            { label: "F", text: "languishing" }
+          ],
+          answer: ["D", "F"]
+        }
+      ]
+    },
+    {
+      number: 2,
+      timeLimit: 23,
+      questions: [
+        {
+          id: "S2-Q1",
+          type: "CR",
+          stimulus: "When the manufacturer of Voltage, a major soft drink, changed its secret formula last year, the export earnings of an island in the Indian Ocean began to fall. This island\u2019s only export comprises more than half of the world\u2019s supply of vanilla beans. Analysts concluded that the original formula of Voltage contained vanilla from beans, but the new formula did not.",
+          questionText: "Which of the following, if true, would most strengthen the conclusion drawn by the analysts?",
+          choices: [
+            { label: "A", text: "The vanilla-bean plantings of a nearby island were beginning to produce crops." },
+            { label: "B", text: "A new process for synthesizing vanilla was under development in a laboratory in the United States." },
+            { label: "C", text: "The island\u2019s trade agreement, under which the vanilla beans were exported to the country that manufactures Voltage, had lapsed." },
+            { label: "D", text: "Imports of vanilla beans dropped in countries where Voltage is made." },
+            { label: "E", text: "There were decreases in sales of several widely sold products that were known to contain vanilla." }
+          ],
+          answer: ["D"]
+        },
+        {
+          id: "S2-Q2",
+          type: "RC_MULTI",
+          passageGroupId: "S2G1",
+          passage: "The discovery of subsurface life on Earth, surviving independently from surface life, refuted the belief that biological processes require not only liquid water but sunlight as well, thus greatly enhancing the possibility of life beyond Earth. Take Jupiter\u2019s moon Europa. Space probes show a body covered with a thick layer of ice. As Europa orbits its planet, however, it flexes due to the gravitational tug-of-war between it, its sister moons, and Jupiter. Through friction, this flexing produces heat in the moon\u2019s interior capable of melting ice. Indeed, observations suggest liquid water exists beneath Europa\u2019s icy crust. Photosynthetic life is impossible there because sunlight is completely absent, but life such as the microbes that flourish deep within earth may still be possible.",
+          directions: "Consider each of the choices separately and select all that apply.",
+          questionText: "Life on Europa in the form suggested in the passage would be dependent on",
+          choices: [
+            { label: "A", text: "The protection Europa\u2019s icy crust gives against the harmful components of sunlight" },
+            { label: "B", text: "The existence of water on Europa" },
+            { label: "C", text: "The motion of Europa around Jupiter" }
+          ],
+          answer: ["B", "C"]
+        },
+        {
+          id: "S2-Q3",
+          type: "RC_SINGLE",
+          passageGroupId: "S2G1",
+          passage: "The discovery of subsurface life on Earth, surviving independently from surface life, refuted the belief that biological processes require not only liquid water but sunlight as well, thus greatly enhancing the possibility of life beyond Earth. <span class=\'highlighted\'>Take Jupiter\u2019s moon Europa.</span> Space probes show a body covered with a thick layer of ice. As Europa orbits its planet, however, it flexes due to the gravitational tug-of-war between it, its sister moons, and Jupiter. Through friction, this flexing produces heat in the moon\u2019s interior capable of melting ice. Indeed, observations suggest liquid water exists beneath Europa\u2019s icy crust. Photosynthetic life is impossible there because sunlight is completely absent, but life such as the microbes that flourish deep within earth may still be possible.",
+          questionText: "The highlighted sentence \u201cTake Jupiter\u2019s moon Europa\u201d serves to introduce",
+          choices: [
+            { label: "A", text: "An instance that allows a hypothesis to be tested" },
+            { label: "B", text: "Speculation grounded in empirical discovery" },
+            { label: "C", text: "A deduction from a newly advanced hypothesis" },
+            { label: "D", text: "A large-scale effect of an apparently insignificant contingency" },
+            { label: "E", text: "The derivation of a contradiction to refute a claim" }
+          ],
+          answer: ["B"]
+        },
+        {
+          id: "S2-Q4",
+          type: "RC_SINGLE",
+          passageGroupId: "S2G2",
+          passage: "The highly dispersed nature of Panzaleo pottery throughout present-day Ecuador has led archaeologists to speculate about the pottery\u2019s origins and significance. Jij\u00f3n y Cama\u00f1o attributed the pottery\u2019s distribution to trade, and based on the large quantities of pottery recovered in the Ambato-Latacunga region of the central Ecuadorian highlands, he proposed that region as the probable locus of production. However, Porras suggests that inhabitants of the subtropical eastern Andean slopes, or monta\u00f1a, were the original producers of Panzaleo. Porras\u2019 theory involves the forced migration of the monta\u00f1a population from their homeland in the Quijos River valley into the Ecuadorian highlands. The gradual exodus and ensuing dispersal of the makers of this ware could account for the diffuse distribution of the materials.",
+          questionText: "It can be inferred from the passage that Jij\u00f3n y Cama\u00f1o would probably agree with which of the following statements about the distribution of Panzaleo pottery throughout Ecuador?",
+          choices: [
+            { label: "A", text: "This distribution is not primarily the result of the relocation of the original makers of the pottery." },
+            { label: "B", text: "This distribution originally took place over a relatively short period of time." },
+            { label: "C", text: "This distribution could not have occurred without the forced migration of certain peoples." },
+            { label: "D", text: "This distribution was largely limited to the Ambato-Latacunga region." },
+            { label: "E", text: "This distribution indicates that the Ambato-Latacunga region was known primarily as a trading center." }
+          ],
+          answer: ["A"]
+        },
+        {
+          id: "S2-Q5",
+          type: "RC_SINGLE",
+          passageGroupId: "S2G2",
+          passage: "The highly dispersed nature of Panzaleo pottery throughout present-day Ecuador has led archaeologists to speculate about the pottery\u2019s origins and significance. Jij\u00f3n y Cama\u00f1o attributed the pottery\u2019s distribution to trade, and based on the large quantities of pottery recovered in the Ambato-Latacunga region of the central Ecuadorian highlands, he proposed that region as the probable locus of production. However, Porras suggests that inhabitants of the subtropical eastern Andean slopes, or monta\u00f1a, were the original producers of Panzaleo. Porras\u2019 theory involves the forced migration of the monta\u00f1a population from their homeland in the Quijos River valley into the Ecuadorian highlands. The gradual exodus and ensuing dispersal of the makers of this ware could account for the diffuse distribution of the materials.",
+          questionText: "The passage cites evidence supporting which of the following hypotheses?",
+          choices: [
+            { label: "A", text: "Jij\u00f3n y Cama\u00f1o\u2019s hypothesis about the relationship between trade and the distribution of Panzaleo pottery" },
+            { label: "B", text: "Jij\u00f3n y Cama\u00f1o\u2019s hypothesis about the probable locus of Panzaleo pottery production" },
+            { label: "C", text: "Porras\u2019 hypothesis about who the original producers of Panzaleo pottery were" },
+            { label: "D", text: "Porras\u2019 hypothesis about the forced migration of certain peoples" },
+            { label: "E", text: "Porras\u2019 hypothesis about the dispersal of the original makers of Panzaleo pottery" }
+          ],
+          answer: ["B"]
+        },
+        {
+          id: "S2-Q6",
+          type: "RC_SINGLE",
+          passageGroupId: "S2G3",
+          passage: "Shapin\u2019s book demonstrates that contrary to a widely held belief, industrial research has not invariably been more regimented than academic science. He argues that the intellectual freedom historically available to industrial scientists during the twentieth century has been underestimated. Many companies, recognizing that the results of scientific investigation were necessarily uncertain and that profits, if any, might take years to materialize, granted scientists considerable latitude to develop their ideas and follow them in unexpected directions. Some companies even provided senior scientists with free time to pursue their own research interests, whatever they might be. Consequently, some scientists were drawn to industrial research not primarily because of the generally good financial compensation but because they saw industry as the best place to do cutting-edge research.",
+          questionText: "The passage\u2019s discussion of \u201cfree time\u201d suggests that",
+          choices: [
+            { label: "A", text: "senior scientists in industry have been less likely than junior scientists to remain in positions where opportunities to conduct their own research are restricted" },
+            { label: "B", text: "scientists who work in industry can gain financially from their own independent research as well as from research they conduct for their companies" },
+            { label: "C", text: "scientists who work in industry have tended to become frustrated by their employers\u2019 expectations that their research will be restricted to areas deemed to be in the employers\u2019 interests" },
+            { label: "D", text: "industry has sometimes been willing to support scientific research that has no prospect of yielding a direct profit" },
+            { label: "E", text: "industrial scientists have not differed from academic scientists in the amount of time they are able to dedicate to pure research" }
+          ],
+          answer: ["D"]
+        },
+        {
+          id: "S2-Q7",
+          type: "RC_SINGLE",
+          passageGroupId: "S2G3",
+          passage: "Shapin\u2019s book demonstrates that contrary to a widely held belief, industrial research has not invariably been more regimented than academic science. He argues that the intellectual freedom historically available to industrial scientists during the twentieth century has been underestimated. Many companies, recognizing that the results of scientific investigation were necessarily uncertain and that profits, if any, might take years to materialize, granted scientists considerable latitude to develop their ideas and follow them in unexpected directions. Some companies even provided senior scientists with free time to pursue their own research interests, whatever they might be. Consequently, some scientists were drawn to industrial research not primarily because of the generally good financial compensation but because they saw industry as the best place to do cutting-edge research.",
+          questionText: "It can be inferred that those who hold the \u201cbelief\u201d mentioned in the passage would be most likely to agree with which of the following statements about scientists?",
+          choices: [
+            { label: "A", text: "Scientists who conduct research in university settings have generally been less motivated than researchers employed in industry to pursue scientific inquiries solely for the sake of advancing knowledge." },
+            { label: "B", text: "Scientists have not been primarily motivated by financial considerations in choosing among different professional settings in which to conduct their research." },
+            { label: "C", text: "Scientists employed by for-profit companies have always tended to have their research restricted by their companies\u2019 interests." },
+            { label: "D", text: "Scientists have tended to be less concerned about the regimentation of industrial research than nonscientists generally assume." },
+            { label: "E", text: "Scientists should be more skeptical than they generally have been about the reliability of research conducted by for-profit companies." }
+          ],
+          answer: ["C"]
+        },
+        {
+          id: "S2-Q8",
+          type: "RC_SINGLE",
+          passageGroupId: "S2G3",
+          passage: "Shapin\u2019s book demonstrates that contrary to a widely held belief, industrial research has not invariably been more regimented than academic science. He argues that the intellectual freedom historically available to industrial scientists during the twentieth century has been underestimated. Many companies, recognizing that the results of scientific investigation were necessarily uncertain and that profits, if any, might take years to materialize, granted scientists considerable latitude to develop their ideas and follow them in unexpected directions. Some companies even provided senior scientists with free time to pursue their own research interests, whatever they might be. Consequently, some scientists were drawn to industrial research not primarily because of the generally good financial compensation but because they saw industry as the best place to do cutting-edge research.",
+          questionText: "The author of the passage mentions companies\u2019 recognition that \u201cthe results of scientific investigation were necessarily uncertain\u201d primarily in order to",
+          choices: [
+            { label: "A", text: "suggest that industrial scientists often faced a different set of challenges than did academic scientists" },
+            { label: "B", text: "present a premise that motivated some companies\u2019 policies regarding their scientists\u2019 research" },
+            { label: "C", text: "explain how companies calculated possible future profits from research undertaken by their scientists" },
+            { label: "D", text: "refute a common assumption about the costs associated with industrial research relative to the costs of academic research" },
+            { label: "E", text: "explain how the expectations of scientists conducting industrial research differed from those of scientists conducting academic research" }
+          ],
+          answer: ["B"]
+        },
+        {
+          id: "S2-Q9",
+          type: "TC",
+          questionText: "Research indicates that the habitat __________ commonly observed for meadow voles and prairie voles living in a single ecosystem results primarily from species differences in habitat tolerance, with interspecific competition playing a lesser role.",
+          blanks: [
+            {
+              id: "i",
+              choices: [
+                { text: "degradation" },
+                { text: "alteration" },
+                { text: "saturation" },
+                { text: "complexity" },
+                { text: "segregation" }
+              ]
+            }
+          ],
+          answer: ["segregation"]
+        },
+        {
+          id: "S2-Q10",
+          type: "TC",
+          questionText: "In the early 1990s, the discovery of a new microbe in wastewater led microbiologists to (i)__________ ammonia\u2019s conversion to nitrogen compounds. Called anammox (for anaerobic ammonia oxidation), the microbe was converting into nitrogen gas in the absence of oxygen, a reaction previously assumed to be (ii)__________.",
+          blanks: [
+            {
+              id: "i",
+              choices: [
+                { text: "question existing dogma about" },
+                { text: "abandon efforts to facilitate" },
+                { text: "raise health concerns regarding" }
+              ]
+            },
+            {
+              id: "ii",
+              choices: [
+                { text: "hazardous" },
+                { text: "irreversible" },
+                { text: "impossible" }
+              ]
+            }
+          ],
+          answer: ["question existing dogma about", "impossible"]
+        },
+        {
+          id: "S2-Q11",
+          type: "TC",
+          questionText: "Once Plowright\u2019s research is complete, she will be prepared to talk about it (i)__________, but for now, because she is discussing theories rather than facts and does not want to commit herself to an unsubstantiated claim, she prefers to make only the most (ii)__________ comments.",
+          blanks: [
+            {
+              id: "i",
+              choices: [
+                { text: "authoritatively" },
+                { text: "tentatively" },
+                { text: "extemporaneously" }
+              ]
+            },
+            {
+              id: "ii",
+              choices: [
+                { text: "provisional" },
+                { text: "prescient" },
+                { text: "germane" }
+              ]
+            }
+          ],
+          answer: ["authoritatively", "provisional"]
+        },
+        {
+          id: "S2-Q12",
+          type: "TC",
+          questionText: "Scientists suspect that the impact with which a bat lands is a function of (i)__________. Bats that roost on hard cave ceiling must land (ii)__________ to avoid injury. By contrast, since foliage is (iii)__________, a hard landing won\u2019t hurt, and might even give the bat time to make sure it has a good grip.",
+          blanks: [
+            {
+              id: "i",
+              choices: [
+                { text: "wind speed" },
+                { text: "roosting location" },
+                { text: "a bat\u2019s size" }
+              ]
+            },
+            {
+              id: "ii",
+              choices: [
+                { text: "quickly" },
+                { text: "softly" },
+                { text: "securely" }
+              ]
+            },
+            {
+              id: "iii",
+              choices: [
+                { text: "plentiful" },
+                { text: "pliable" },
+                { text: "seasonal" }
+              ]
+            }
+          ],
+          answer: ["roosting location", "softly", "pliable"]
+        },
+        {
+          id: "S2-Q13",
+          type: "SE",
+          questionText: "Meteorology is one of the few fields of applied science that demands prediction; since prediction involves considerable uncertainty and uncertainty is __________ scientists, meteorology will continue to exist in a fraught intellectual space.",
+          choices: [
+            { label: "A", text: "mysterious to" },
+            { label: "B", text: "anathema to" },
+            { label: "C", text: "discredited by" },
+            { label: "D", text: "pivotal for" },
+            { label: "E", text: "repellent to" },
+            { label: "F", text: "familiar to" }
+          ],
+          answer: ["B", "E"]
+        },
+        {
+          id: "S2-Q14",
+          type: "SE",
+          questionText: "The 1966 Mexican art exhibition \u201cConfrontation 66\u201d seemed to define the Mexican art world as one in which political alignment was __________, yet painter Joy Laville rose to prominence with paintings devoid of contentiousness.",
+          choices: [
+            { label: "A", text: "inconsequential" },
+            { label: "B", text: "ineluctable" },
+            { label: "C", text: "requisite" },
+            { label: "D", text: "perilous" },
+            { label: "E", text: "pointless" },
+            { label: "F", text: "obsolete" }
+          ],
+          answer: ["A", "E"]
+        },
+        {
+          id: "S2-Q15",
+          type: "SE",
+          questionText: "Agencies responsible for protecting natural resources too often issue permits allowing exploitation of those resources, a process that remains __________ given that agencies have become experts at masking their decisions in scientific terms.",
+          choices: [
+            { label: "A", text: "controversial" },
+            { label: "B", text: "exacting" },
+            { label: "C", text: "obscure" },
+            { label: "D", text: "onerous" },
+            { label: "E", text: "opaque" },
+            { label: "F", text: "misleading" }
+          ],
+          answer: ["C", "E"]
+        }
+      ]
+    }
+  ]
+};
+
+// ============================================================
+// STATE
+// ============================================================
+const state = {
+  screen: 'start', // start | section-intro | question | results
+  currentSection: 0,
+  currentQuestion: 0,
+  answers: [{}, {}], // answers[sectionIdx][questionIdx] = value
+  sectionDone: [false, false],
+  timer: null,
+  timeLeft: 0
+};
+
+// ============================================================
+// HELPERS
+// ============================================================
+function $(id) { return document.getElementById(id); }
+
+function formatTime(secs) {
+  const m = Math.floor(secs / 60);
+  const s = secs % 60;
+  return String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+}
+
+function getQuestion(si, qi) {
+  return examData.sections[si].questions[qi];
+}
+
+function getTotalQ(si) {
+  return examData.sections[si].questions.length;
+}
+
+// Normalize answer for comparison
+function normalizeAnswer(ans) {
+  if (!ans) return [];
+  if (Array.isArray(ans)) return ans.map(a => a.trim().toLowerCase()).sort();
+  return [String(ans).trim().toLowerCase()];
+}
+
+function isCorrect(q, userAns) {
+  if (!userAns || (Array.isArray(userAns) && userAns.length === 0)) return false;
+  const correct = normalizeAnswer(q.answer);
+  const user = normalizeAnswer(userAns);
+  return JSON.stringify(correct) === JSON.stringify(user);
+}
+
+function computeScore() {
+  let total = 0;
+  let s1 = 0, s2 = 0;
+  examData.sections.forEach((sec, si) => {
+    sec.questions.forEach((q, qi) => {
+      const ua = state.answers[si][qi];
+      if (isCorrect(q, ua)) {
+        total++;
+        if (si === 0) s1++; else s2++;
+      }
+    });
+  });
+  const scaled = Math.round(examData.scoringFormula.multiplier * total) + examData.scoringFormula.base;
+  return { total, s1, s2, scaled };
+}
+
+function getAnswerDisplay(q, userAns) {
+  if (!userAns || (Array.isArray(userAns) && userAns.length === 0)) return '-';
+  if (q.type === 'TC') {
+    if (q.blanks.length === 1) return Array.isArray(userAns) ? userAns[0] : userAns;
+    return (Array.isArray(userAns) ? userAns : [userAns]).join(' / ');
+  }
+  if (Array.isArray(userAns)) return userAns.join(', ');
+  return userAns;
+}
+
+function getCorrectDisplay(q) {
+  if (q.type === 'TC') {
+    if (q.blanks.length === 1) return q.answer[0];
+    return q.answer.join(' / ');
+  }
+  return q.answer.join(', ');
+}
+
+// ============================================================
+// TIMER
+// ============================================================
+function startTimer(seconds) {
+  clearInterval(state.timer);
+  state.timeLeft = seconds;
+  renderTimer();
+  state.timer = setInterval(() => {
+    state.timeLeft--;
+    renderTimer();
+    if (state.timeLeft <= 0) {
+      clearInterval(state.timer);
+      handleTimeUp();
+    }
+  }, 1000);
+}
+
+function stopTimer() { clearInterval(state.timer); }
+
+function renderTimer() {
+  const el = $('timer');
+  if (!el) return;
+  el.textContent = formatTime(state.timeLeft);
+  if (state.timeLeft <= 60) el.classList.add('warning');
+  else el.classList.remove('warning');
+}
+
+function handleTimeUp() {
+  state.sectionDone[state.currentSection] = true;
+  if (state.currentSection === 0) {
+    showModal('시간 종료', 'Section 1 시간이 종료되었습니다. Section 2로 이동합니다.', false, () => {
+      state.currentSection = 1;
+      state.currentQuestion = 0;
+      state.screen = 'section-intro';
+      render();
+    });
+  } else {
+    showModal('시간 종료', 'Section 2 시간이 종료되었습니다. 결과를 확인합니다.', false, () => {
+      state.screen = 'results';
+      render();
+    });
+  }
+}
+
+// ============================================================
+// MODAL
+// ============================================================
+function showModal(title, message, showCancel, onConfirm, onCancel) {
+  $('modal-title').textContent = title;
+  $('modal-message').textContent = message;
+  $('modal-cancel').style.display = showCancel ? '' : 'none';
+  $('modal').classList.add('show');
+  $('modal-confirm').onclick = () => {
+    $('modal').classList.remove('show');
+    if (onConfirm) onConfirm();
+  };
+  $('modal-cancel').onclick = () => {
+    $('modal').classList.remove('show');
+    if (onCancel) onCancel();
+  };
+}
+
+// ============================================================
+// RENDER
+// ============================================================
+function render() {
+  const app = $('app');
+  if (state.screen === 'start') renderStart(app);
+  else if (state.screen === 'section-intro') renderSectionIntro(app);
+  else if (state.screen === 'question') renderQuestion(app);
+  else if (state.screen === 'results') renderResults(app);
+}
+
+function renderStart(app) {
+  stopTimer();
+  app.innerHTML = `
+    <div id="topbar-placeholder" style="height:0"></div>
+    <main>
+      <div class="start-screen">
+        <div class="eyebrow">GRE Verbal Reasoning</div>
+        <h1>Mock Practice Test</h1>
+        <div class="round">${examData.round} &mdash; ${examData.date}</div>
+        <div class="start-info">
+          <div class="start-info-row"><span class="k">총 섹션</span><span class="v">2 Sections</span></div>
+          <div class="start-info-row"><span class="k">Section 1</span><span class="v">12문항 · 18분</span></div>
+          <div class="start-info-row"><span class="k">Section 2</span><span class="v">15문항 · 23분</span></div>
+          <div class="start-info-row"><span class="k">총 문항</span><span class="v">27문항</span></div>
+          <div class="start-info-row"><span class="k">환산 점수</span><span class="v">round(1.481 × 정답수) + 130</span></div>
+        </div>
+        <div class="start-instructions">
+          <ul>
+            <li>각 섹션은 시작 후 타이머가 자동으로 카운트다운됩니다.</li>
+            <li>섹션 완료 후에는 해당 섹션으로 돌아갈 수 없습니다.</li>
+            <li>Sentence Equivalence: 정확히 2개를 선택해야 합니다.</li>
+            <li>Text Completion: 모든 빈칸을 채워야 다음으로 진행됩니다.</li>
+            <li>건너뛰기로 이동한 문제는 나중에 돌아와서 풀 수 있습니다.</li>
+          </ul>
+        </div>
+        <button class="btn btn-primary btn-large" onclick="startExam()">시작하기</button>
+      </div>
+    </main>
+  `;
+}
+
+function startExam() {
+  state.screen = 'section-intro';
+  state.currentSection = 0;
+  state.currentQuestion = 0;
+  render();
+}
+
+function renderSectionIntro(app) {
+  stopTimer();
+  const si = state.currentSection;
+  const sec = examData.sections[si];
+  app.innerHTML = `
+    <div style="height:0"></div>
+    <main>
+      <div class="section-intro">
+        <div class="num">Section ${sec.number} of 2</div>
+        <h2>Section ${sec.number}</h2>
+        <div class="meta">
+          ${sec.questions.length}문항 &nbsp;·&nbsp; ${sec.timeLimit}분<br>
+          For each question, follow the specific directions given.<br>
+          Select the best answer(s) for each question.
+        </div>
+        <button class="btn btn-primary btn-large" onclick="startSection()">Section ${sec.number} 시작</button>
+      </div>
+    </main>
+  `;
+}
+
+function startSection() {
+  const si = state.currentSection;
+  state.screen = 'question';
+  state.currentQuestion = 0;
+  render();
+  startTimer(examData.sections[si].timeLimit * 60);
+}
+
+function renderQuestion(app) {
+  const si = state.currentSection;
+  const qi = state.currentQuestion;
+  const q = getQuestion(si, qi);
+  const totalQ = getTotalQ(si);
+  const progress = ((qi + 1) / totalQ * 100).toFixed(1);
+  const isLast = qi === totalQ - 1;
+  const userAns = state.answers[si][qi];
+
+  // Build type label
+  const typeLabels = {CR:'Critical Reasoning', RC_SINGLE:'Reading Comprehension', RC_MULTI:'Reading Comprehension', TC:'Text Completion', SE:'Sentence Equivalence'};
+
+  // Check if next is enabled
+  let nextEnabled = false;
+  if (q.type === 'CR' || q.type === 'RC_SINGLE') {
+    nextEnabled = !!userAns;
+  } else if (q.type === 'RC_MULTI') {
+    nextEnabled = Array.isArray(userAns) && userAns.length > 0;
+  } else if (q.type === 'SE') {
+    nextEnabled = Array.isArray(userAns) && userAns.length === 2;
+  } else if (q.type === 'TC') {
+    if (q.blanks.length === 1) {
+      nextEnabled = Array.isArray(userAns) && userAns.length === 1 && userAns[0] !== undefined;
+    } else {
+      nextEnabled = Array.isArray(userAns) && userAns.length === q.blanks.length && userAns.every(a => a !== undefined && a !== null);
+    }
+  }
+
+  const questionContent = buildQuestionHTML(q, si, qi, userAns);
+
+  app.innerHTML = `
+    <div class="topbar">
+      <div class="topbar-left">
+        <span class="label">Section</span><span class="value">${si + 1}</span>
+        &nbsp;&nbsp;
+        <span class="label">Question</span><span class="value">${qi + 1} / ${totalQ}</span>
+      </div>
+      <div class="timer" id="timer">${formatTime(state.timeLeft)}</div>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" style="width:${progress}%"></div></div>
+    <main>
+      <div class="question-meta">
+        <span class="qtype">${typeLabels[q.type] || q.type}</span>
+        <span>Q${qi + 1}</span>
+      </div>
+      ${questionContent}
+    </main>
+    <div class="footer-nav">
+      <div class="nav-group">
+        <button class="btn" onclick="goBack()" ${qi === 0 ? 'disabled' : ''}>&#8592; 이전</button>
+      </div>
+      <div class="nav-group">
+        <button class="btn" onclick="skipQuestion()">건너뛰기 &#8594;</button>
+        ${isLast
+          ? `<button class="btn btn-finish" onclick="finishSection()" ${nextEnabled ? '' : 'disabled'}>섹션 완료 &#10003;</button>`
+          : `<button class="btn btn-primary" onclick="nextQuestion()" ${nextEnabled ? '' : 'disabled'}>다음 &#8594;</button>`
+        }
+      </div>
+    </div>
+  `;
+}
+
+function buildQuestionHTML(q, si, qi, userAns) {
+  if (q.type === 'CR') {
+    return `
+      <div class="question-body">
+        <div class="stimulus">${escHtml(q.stimulus)}</div>
+        <div class="question-text">${escHtml(q.questionText)}</div>
+        <ul class="choices">
+          ${q.choices.map(c => `
+            <li class="choice ${userAns === c.label ? 'selected' : ''}" onclick="selectSingle(${si},${qi},'${c.label}')">
+              <input type="radio" name="q${si}_${qi}" ${userAns === c.label ? 'checked' : ''} onchange="selectSingle(${si},${qi},'${c.label}')">
+              <span><span class="label">${c.label}.</span>${escHtml(c.text)}</span>
+            </li>`).join('')}
+        </ul>
+      </div>`;
+  }
+
+  if (q.type === 'RC_SINGLE' || q.type === 'RC_MULTI') {
+    const isMulti = q.type === 'RC_MULTI';
+    const choicesHtml = q.choices.map((c, ci) => {
+      const sel = isMulti
+        ? (Array.isArray(userAns) && userAns.includes(c.label))
+        : userAns === c.label;
+      return `
+        <li class="choice ${sel ? 'selected' : ''}" onclick="${isMulti ? `toggleMulti(${si},${qi},'${c.label}')` : `selectSingle(${si},${qi},'${c.label}')`}">
+          <input type="${isMulti ? 'checkbox' : 'radio'}" ${sel ? 'checked' : ''} onchange="${isMulti ? `toggleMulti(${si},${qi},'${c.label}')` : `selectSingle(${si},${qi},'${c.label}')`}">
+          <span>${isMulti ? '' : `<span class="label">${c.label}.</span>`}${escHtml(c.text)}</span>
+        </li>`;
+    }).join('');
+    return `
+      <div class="layout-rc">
+        <div class="passage">
+          <div class="passage-label">Passage</div>
+          <p>${q.passage}</p>
+        </div>
+        <div class="question-body">
+          ${isMulti ? `<div class="directions">Consider each of the choices separately and select all that apply.</div>` : ''}
+          <div class="question-text">${escHtml(q.questionText)}</div>
+          <ul class="choices">${choicesHtml}</ul>
+        </div>
+      </div>`;
+  }
+
+  if (q.type === 'TC') {
+    if (q.blanks.length === 1) {
+      const blank = q.blanks[0];
+      const choicesHtml = blank.choices.map((c, ci) => {
+        const sel = Array.isArray(userAns) && userAns[0] === c.text;
+        return `
+          <li class="choice ${sel ? 'selected' : ''}" onclick="selectTC(${si},${qi},0,'${escAttr(c.text)}')">
+            <input type="radio" name="tc_${si}_${qi}_0" ${sel ? 'checked' : ''}>
+            <span>${escHtml(c.text)}</span>
+          </li>`;
+      }).join('');
+      return `
+        <div class="question-body">
+          <div class="question-text">${escHtml(q.questionText)}</div>
+          <ul class="choices">${choicesHtml}</ul>
+        </div>`;
+    } else {
+      const cols = q.blanks.length;
+      const colsHtml = q.blanks.map((blank, bi) => {
+        const choicesHtml = blank.choices.map((c, ci) => {
+          const sel = Array.isArray(userAns) && userAns[bi] === c.text;
+          return `
+            <li class="choice ${sel ? 'selected' : ''}" onclick="selectTC(${si},${qi},${bi},'${escAttr(c.text)}')">
+              <input type="radio" name="tc_${si}_${qi}_${bi}" ${sel ? 'checked' : ''}>
+              <span>${escHtml(c.text)}</span>
+            </li>`;
+        }).join('');
+        return `
+          <div class="tc-column">
+            <div class="tc-column-header">Blank (${blank.id})</div>
+            <ul class="choices">${choicesHtml}</ul>
+          </div>`;
+      }).join('');
+      return `
+        <div class="question-body">
+          <div class="question-text">${escHtml(q.questionText)}</div>
+          <div class="tc-grid cols-${cols}">${colsHtml}</div>
+        </div>`;
+    }
+  }
+
+  if (q.type === 'SE') {
+    const selArr = Array.isArray(userAns) ? userAns : [];
+    const choicesHtml = q.choices.map(c => {
+      const sel = selArr.includes(c.label);
+      return `
+        <li class="choice ${sel ? 'selected' : ''}" onclick="toggleSE(${si},${qi},'${c.label}')">
+          <input type="checkbox" ${sel ? 'checked' : ''}>
+          <span><span class="label">${c.label}.</span>${escHtml(c.text)}</span>
+        </li>`;
+    }).join('');
+    return `
+      <div class="question-body">
+        <div class="directions">Select exactly two answer choices that, when used to complete the sentence, fit the meaning of the sentence as a whole and produce completed sentences that are alike in meaning.</div>
+        <div class="question-text">${escHtml(q.questionText)}</div>
+        <ul class="choices">${choicesHtml}</ul>
+        <div class="se-warning" id="se-warn-${si}-${qi}">정확히 2개를 선택해주세요.</div>
+      </div>`;
+  }
+  return '';
+}
+
+function escHtml(str) {
+  if (!str) return '';
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function escAttr(str) {
+  if (!str) return '';
+  return str.replace(/'/g, '\\u0027').replace(/"/g, '\\u0022');
+}
+
+// ============================================================
+// ANSWER HANDLERS
+// ============================================================
+function selectSingle(si, qi, label) {
+  state.answers[si][qi] = label;
+  renderQuestion($('app'));
+}
+
+function toggleMulti(si, qi, label) {
+  let arr = state.answers[si][qi];
+  if (!Array.isArray(arr)) arr = [];
+  const idx = arr.indexOf(label);
+  if (idx >= 0) arr.splice(idx, 1);
+  else arr.push(label);
+  state.answers[si][qi] = arr;
+  renderQuestion($('app'));
+}
+
+function toggleSE(si, qi, label) {
+  let arr = state.answers[si][qi];
+  if (!Array.isArray(arr)) arr = [];
+  const idx = arr.indexOf(label);
+  if (idx >= 0) {
+    arr.splice(idx, 1);
+  } else {
+    if (arr.length >= 2) {
+      const w = $(`se-warn-${si}-${qi}`);
+      if (w) { w.classList.add('show'); setTimeout(() => w.classList.remove('show'), 2000); }
+      return;
+    }
+    arr.push(label);
+  }
+  state.answers[si][qi] = [...arr];
+  renderQuestion($('app'));
+}
+
+function selectTC(si, qi, blankIdx, text) {
+  let arr = state.answers[si][qi];
+  const q = getQuestion(si, qi);
+  if (!Array.isArray(arr) || arr.length !== q.blanks.length) {
+    arr = new Array(q.blanks.length).fill(null);
+  }
+  arr[blankIdx] = text;
+  state.answers[si][qi] = [...arr];
+  renderQuestion($('app'));
+}
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+function goBack() {
+  if (state.currentQuestion > 0) {
+    state.currentQuestion--;
+    renderQuestion($('app'));
+  }
+}
+
+function skipQuestion() {
+  const si = state.currentSection;
+  const totalQ = getTotalQ(si);
+  if (state.currentQuestion < totalQ - 1) {
+    state.currentQuestion++;
+    renderQuestion($('app'));
+  }
+}
+
+function nextQuestion() {
+  const si = state.currentSection;
+  const totalQ = getTotalQ(si);
+  if (state.currentQuestion < totalQ - 1) {
+    state.currentQuestion++;
+    renderQuestion($('app'));
+  }
+}
+
+function finishSection() {
+  const si = state.currentSection;
+  const secNum = si + 1;
+  showModal(
+    `Section ${secNum} 완료`,
+    `Section ${secNum}을 완료하시겠습니까? 완료 후에는 Section ${secNum} 문제로 돌아갈 수 없습니다.`,
+    true,
+    () => {
+      stopTimer();
+      state.sectionDone[si] = true;
+      if (si === 0) {
+        state.currentSection = 1;
+        state.currentQuestion = 0;
+        state.screen = 'section-intro';
+        render();
+      } else {
+        state.screen = 'results';
+        render();
+      }
+    }
+  );
+}
+
+// ============================================================
+// RESULTS
+// ============================================================
+function renderResults(app) {
+  stopTimer();
+  const { total, s1, s2, scaled } = computeScore();
+  const totalQ = examData.sections.reduce((a, s) => a + s.questions.length, 0);
+
+  let rows = '';
+  examData.sections.forEach((sec, si) => {
+    rows += `<tr class="section-divider"><td colspan="5">Section ${sec.number}</td></tr>`;
+    sec.questions.forEach((q, qi) => {
+      const ua = state.answers[si][qi];
+      const correct = isCorrect(q, ua);
+      const answered = ua && (Array.isArray(ua) ? ua.length > 0 : true);
+      const typeLabel = {CR:'CR', RC_SINGLE:'RC', RC_MULTI:'RC', TC:'TC', SE:'SE'}[q.type] || q.type;
+      const userDisp = getAnswerDisplay(q, ua);
+      const corrDisp = getCorrectDisplay(q);
+      let markHtml;
+      if (!answered) markHtml = `<span class="mark-skip">-</span> <span class="mark-wrong">✗</span>`;
+      else if (correct) markHtml = `<span class="mark-correct">✓</span>`;
+      else markHtml = `<span class="mark-wrong">✗</span>`;
+      rows += `<tr>
+        <td>S${si+1}-Q${qi+1}</td>
+        <td>${typeLabel}</td>
+        <td>${escHtml(userDisp)}</td>
+        <td>${escHtml(corrDisp)}</td>
+        <td>${markHtml}</td>
+      </tr>`;
+    });
+  });
+
+  app.innerHTML = `
+    <div style="height:0"></div>
+    <main>
+      <div class="results">
+        <div class="results-header">
+          <div class="eyebrow">시험 완료</div>
+          <h2>결과 확인</h2>
+          <div style="color:var(--ink-soft);font-family:-apple-system,sans-serif;font-size:14px">${examData.round} &mdash; ${examData.date}</div>
+        </div>
+        <div class="score-card">
+          <div class="score-cell">
+            <div class="label">총 정답</div>
+            <div class="value">${total}<span class="total"> / ${totalQ}</span></div>
+          </div>
+          <div class="score-cell">
+            <div class="label">환산 점수</div>
+            <div class="value">${scaled}</div>
+            <div class="sub">130–170 scale</div>
+          </div>
+          <div class="score-cell">
+            <div class="label">섹션별 정답</div>
+            <div class="value" style="font-size:28px">${s1}<span class="total">/12</span></div>
+            <div class="sub">S2: ${s2}/15</div>
+          </div>
+        </div>
+        <div class="results-table">
+          <table>
+            <thead>
+              <tr>
+                <th>번호</th><th>유형</th><th>내 답</th><th>정답</th><th>O/X</th>
+              </tr>
+            </thead>
+            <tbody>${rows}</tbody>
+          </table>
+        </div>
+        <div class="results-actions">
+          <button class="btn btn-primary" onclick="location.reload()">다시 풀기</button>
+          <button class="btn" onclick="window.print()">결과 인쇄</button>
+        </div>
+      </div>
+    </main>
+  `;
+}
+
+// ============================================================
+// INIT
+// ============================================================
+render();
+</script>
+</body>
+</html>
