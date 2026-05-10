@@ -1859,6 +1859,7 @@ function showModal({ title, message, confirmText = '확인', cancelText = '취�
   cancelBtn.textContent = cancelText;
   cancelBtn.style.display = showCancel ? 'inline-block' : 'none';
   confirmBtn.onclick = () => {
+    hideModal();
     if (onConfirm) onConfirm();
   };
   cancelBtn.onclick = () => {
@@ -2420,5 +2421,16 @@ function finishSection() {
 document.addEventListener('DOMContentLoaded', render);
 render(); // 즉시 호출 (DOMContentLoaded 이후에 스크립트 실행될 수도 있음)
 </script>
+
+<div class="modal-backdrop" id="modal">
+  <div class="modal">
+    <h3 id="modal-title"></h3>
+    <p id="modal-message"></p>
+    <div class="modal-actions">
+      <button class="btn" id="modal-cancel">취소</button>
+      <button class="btn btn-primary" id="modal-confirm">확인</button>
+    </div>
+  </div>
+</div>
 
 </body></html>
