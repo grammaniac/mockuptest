@@ -1,7 +1,4 @@
-
-<!DOCTYPE html>
-<html lang="ko">
-<head>
+<html lang="ko"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GRE Verbal Mock Test — 26회</title>
@@ -320,6 +317,9 @@
   .passage .highlighted {
     background: #fff3cd;
     padding: 1px 2px;
+  }
+  .passage b {
+    font-weight: bold;
   }
 
   .question-body {
@@ -673,7 +673,51 @@
 </head>
 <body>
 
-<div id="app"></div>
+<div id="app">
+    <div class="start-screen">
+      <div class="eyebrow">GRE Verbal Reasoning</div>
+      <h1>Mock Practice Test</h1>
+      <div class="round">26회</div>
+
+      <div class="start-info">
+        <div class="start-info-row">
+          <span class="k">총 섹션 수</span>
+          <span class="v">2 Sections</span>
+        </div>
+        
+          <div class="start-info-row">
+            <span class="k">Section 1</span>
+            <span class="v">12 questions · 18 min</span>
+          </div>
+        
+          <div class="start-info-row">
+            <span class="k">Section 2</span>
+            <span class="v">15 questions · 23 min</span>
+          </div>
+        
+        <div class="start-info-row">
+          <span class="k">총 문항 수</span>
+          <span class="v">27 questions</span>
+        </div>
+        <div class="start-info-row">
+          <span class="k">채점 방식</span>
+          <span class="v">round(1.481 × correct) + 130</span>
+        </div>
+      </div>
+
+      <div class="start-instructions">
+        <ul>
+          <li>각 섹션은 독립된 타이머로 진행되며, 시간이 종료되면 자동으로 다음 섹션으로 넘어갑니다.</li>
+          <li>섹션 내에서는 자유롭게 이전 문제로 돌아가거나 건너뛸 수 있습니다.</li>
+          <li>섹션을 완료하면 해당 섹션의 답안을 변경할 수 없습니다.</li>
+          <li>Sentence Equivalence 문제는 정확히 2개의 답을 선택해야 합니다.</li>
+          <li>모든 섹션이 종료되면 채점 결과 화면이 표시됩니다.</li>
+        </ul>
+      </div>
+
+      <button class="btn btn-primary btn-large" onclick="handleStart()">시험 시작하기</button>
+    </div>
+  </div>
 
 <!-- Modal -->
 <div class="modal-backdrop" id="modal">
@@ -708,7 +752,7 @@ const examData = {
           "id": "S1-Q1",
           "type": "CR",
           "questionText": "In the argument given, the two portions in boldface play which of the following roles?",
-          "stimulus": "Rain-soaked soil contains less oxygen than does drier soil. <span class=\"highlighted\">The roots of melon plants perform less efficiently under the low-oxygen conditions present in rain-soaked soil.</span> When the efficiency of melon roots is impaired, the roots do not supply sufficient amounts of the proper nutrients for the plants to perform photosynthesis at their usual levels. It follows that <span class=\"highlighted\">melon plants have a lower-than-usual rate of photosynthesis when their roots are in rain-soaked soil.</span> When the photosynthesis of the plants slows, sugar stored in the fruits is drawn off to supply the plants with energy. Therefore, ripe melons harvested after a prolonged period of heavy rain should be less sweet than other ripe melons.",
+          "stimulus": "Rain-soaked soil contains less oxygen than does drier soil. <b>The roots of melon plants perform less efficiently under the low-oxygen conditions present in rain-soaked soil.</b> When the efficiency of melon roots is impaired, the roots do not supply sufficient amounts of the proper nutrients for the plants to perform photosynthesis at their usual levels. It follows that <b>melon plants have a lower-than-usual rate of photosynthesis when their roots are in rain-soaked soil.</b> When the photosynthesis of the plants slows, sugar stored in the fruits is drawn off to supply the plants with energy. Therefore, ripe melons harvested after a prolonged period of heavy rain should be less sweet than other ripe melons.",
           "choices": [
             {
               "label": "A",
@@ -1835,6 +1879,7 @@ function showModal({ title, message, confirmText = '확인', cancelText = '취�
   cancelBtn.textContent = cancelText;
   cancelBtn.style.display = showCancel ? 'inline-block' : 'none';
   confirmBtn.onclick = () => {
+    hideModal();
     if (onConfirm) onConfirm();
   };
   cancelBtn.onclick = () => {
@@ -2396,5 +2441,6 @@ function finishSection() {
 document.addEventListener('DOMContentLoaded', render);
 render(); // 즉시 호출 (DOMContentLoaded 이후에 스크립트 실행될 수도 있음)
 </script>
-</body>
-</html>
+
+
+</body></html>
