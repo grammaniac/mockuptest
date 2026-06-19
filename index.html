@@ -1,230 +1,438 @@
+여기 전체 코드입니다! 아래 내용을 **전체 복사**해서 GitHub의 `index.html`에 붙여넣으세요 👇
 
+---
+
+```html
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GRE Verbal 무료 모의고사</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GRE Verbal 무료 모의고사 | 송종옥샘</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #f5f5f7;
-      --surface: #ffffff;
-      --primary: #1d1d1f;
-      --secondary: #6e6e73;
-      --accent: #0071e3;
-      --accent-hover: #0077ed;
-      --accent-light: #e8f0fb;
-      --gold: #bf8f00;
-      --gold-bg: #fffbeb;
-      --gold-border: #f5d87e;
-      --radius: 18px;
-      --shadow: 0 4px 24px rgba(0,0,0,0.08);
-      --shadow-hover: 0 8px 40px rgba(0,0,0,0.14);
+      --black: #000000;
+      --near-black: #1d1d1f;
+      --light-bg: #f5f5f7;
+      --white: #ffffff;
+      --apple-blue: #0071e3;
+      --link-blue: #0066cc;
+      --link-blue-dark: #2997ff;
+      --body-text: rgba(0,0,0,0.8);
+      --card-shadow: rgba(0,0,0,0.22) 3px 5px 30px 0px;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
-      background: var(--bg);
-      color: var(--primary);
-      min-height: 100vh;
-      -webkit-font-smoothing: antialiased;
+      font-family: system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+      background: var(--light-bg);
+      color: var(--near-black);
+      overflow-x: hidden;
     }
 
     /* ── NAV ── */
     nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(245,245,247,0.82);
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 52px;
+      background: rgba(0,0,0,0.82);
       backdrop-filter: saturate(180%) blur(20px);
       -webkit-backdrop-filter: saturate(180%) blur(20px);
-      border-bottom: 1px solid rgba(0,0,0,0.08);
-      display: flex; align-items: center; justify-content: center;
-      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
     }
-    nav span {
-      font-size: 15px; font-weight: 500;
-      color: var(--secondary); letter-spacing: -0.2px;
+    .nav-brand {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--white);
+      text-transform: uppercase;
+      text-decoration: none;
+      opacity: 0.9;
     }
+    .nav-link {
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      letter-spacing: -0.12px;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--white); }
 
     /* ── HERO ── */
     .hero {
+      background: var(--black);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 80px 24px 56px;
+      padding: 100px 24px 80px;
+      ```html
+position: relative;
+      overflow: hidden;
     }
-    .hero-badge {
-      display: inline-block;
-      background: var(--accent-light);
-      color: var(--accent);
-      font-size: 13px; font-weight: 600;
-      padding: 6px 16px; border-radius: 999px;
-      margin-bottom: 24px; letter-spacing: 0.4px;
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 60%, rgba(0,113,227,0.10) 0%, transparent 70%);
+      pointer-events: none;
     }
-    .hero h1 {
-      font-size: clamp(32px, 6vw, 56px);
-      font-weight: 700;
-      letter-spacing: -1.5px;
-      line-height: 1.1;
-      color: var(--primary);
+    .hero-eyebrow {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--link-blue-dark);
       margin-bottom: 20px;
+      opacity: 0.9;
     }
-    .hero h1 span {
-      background: linear-gradient(135deg, #0071e3 0%, #34aadc 100%);
+    .hero-title {
+      font-size: clamp(40px, 7vw, 72px);
+      font-weight: 700;
+      line-height: 1.06;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      margin-bottom: 22px;
+      max-width: 820px;
+    }
+    .hero-title span {
+      background: linear-gradient(135deg, #2997ff 0%, #60b8ff 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-    .hero p {
-      font-size: 18px; font-weight: 300;
-      color: var(--secondary); max-width: 500px; margin: 0 auto;
-      line-height: 1.65;
+    .hero-sub {
+      font-size: clamp(17px, 2.2vw, 21px);
+      font-weight: 300;
+      line-height: 1.47;
+      letter-spacing: -0.374px;
+      color: rgba(255,255,255,0.72);
+      margin-bottom: 44px;
+      max-width: 540px;
     }
+    .hero-cta-group {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      background: var(--apple-blue);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 400;
+      letter-spacing: -0.374px;
+      padding: 12px 26px;
+      border-radius: 980px;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+    .btn-primary:hover { background: #0077ed; transform: translateY(-1px); }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      background: transparent;
+      color: var(--link-blue-dark);
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 400;
+```html
+letter-spacing: -0.374px;
+      padding: 12px 26px;
+      border-radius: 980px;
+      border: 1px solid rgba(41,151,255,0.5);
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+    .btn-outline:hover { border-color: var(--link-blue-dark); color: #60b8ff; transform: translateY(-1px); }
 
     /* ── SCORE BANNER ── */
-    .score-banner {
-      max-width: 680px; margin: 0 auto 60px;
-      padding: 0 24px;
+    .score-section {
+      background: var(--black);
+      padding: 0 24px 100px;
+      display: flex;
+      justify-content: center;
     }
     .score-card {
-      background: var(--gold-bg);
-      border: 1.5px solid var(--gold-border);
-      border-radius: var(--radius);
-      padding: 22px 32px;
-      display: flex; align-items: center; gap: 18px;
-    }
-    .score-icon {
-      font-size: 32px; flex-shrink: 0;
-    }
-    .score-card p {
-      font-size: 16px; font-weight: 500;
-      color: #7a5c00; line-height: 1.5;
-    }
-    .score-card strong { font-weight: 700; color: var(--gold); font-size: 18px; }
-
-    /* ── GRID ── */
-    .section-label {
+      max-width: 680px;
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 22px;
+      padding: 48px 52px;
       text-align: center;
-      font-size: 13px; font-weight: 600;
-      color: var(--secondary); letter-spacing: 1.2px;
-      text-transform: uppercase;
-      margin-bottom: 20px;
+      backdrop-filter: blur(12px);
     }
-
-    .grid-wrapper { max-width: 860px; margin: 0 auto; padding: 0 24px 80px; }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 14px;
-    }
-
-    .mock-btn {
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      text-decoration: none;
-      background: var(--surface);
-      border: 1px solid rgba(0,0,0,0.06);
-      border-radius: var(--radius);
-      padding: 28px 16px;
-      box-shadow: var(--shadow);
-      transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.15s;
-      cursor: pointer;
-    }
-    .mock-btn:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-hover);
-      background: #fafafa;
-    }
-    .mock-btn:active { transform: translateY(-1px); }
-
-    .mock-num {
-      font-size: 28px; font-weight: 700;
-      color: var(--accent);
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-    .mock-label {
-      font-size: 13px; font-weight: 500;
-      color: var(--secondary);
-    }
-    .mock-tag {
-      margin-top: 10px;
-      font-size: 11px; font-weight: 600;
-      color: #fff;
-      background: var(--accent);
-      padding: 3px 10px; border-radius: 999px;
-      letter-spacing: 0.3px;
-    }
-
-    /* ── DIVIDER ── */
-    .divider {
-      max-width: 860px; margin: 0 auto 60px;
-      padding: 0 24px;
-    }
-    .divider hr {
-      border: none; border-top: 1px solid rgba(0,0,0,0.1);
-    }
-
-    /* ── PORTAL ── */
-    .portal-section {
-      max-width: 680px; margin: 0 auto 100px;
-      padding: 0 24px; text-align: center;
-    }
-    .portal-card {
-      background: var(--surface);
-      border-radius: 24px;
-      padding: 52px 48px;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(0,0,0,0.06);
-    }
-    .portal-icon { font-size: 52px; margin-bottom: 20px; }
-    .portal-card h2 {
-      font-size: 26px; font-weight: 700;
-      letter-spacing: -0.5px;
-      color: var(--primary); margin-bottom: 14px;
-    }
-    .portal-card p {
-      font-size: 16px; font-weight: 300;
-      color: var(--secondary); line-height: 1.7;
-      margin-bottom: 36px;
-    }
-    .portal-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--accent);
-      color: #fff;
-      text-decoration: none;
-      font-size: 16px; font-weight: 600;
-      padding: 14px 36px;
+    .score-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0,113,227,0.18);
+      border: 1px solid rgba(0,113,227,0.35);
       border-radius: 980px;
-      transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
-      box-shadow: 0 4px 16px rgba(0,113,227,0.32);
+      padding: 8px 22px;
+      margin-bottom: 24px;
     }
-    .portal-btn:hover {
-      background: var(--accent-hover);
-      transform: scale(1.03);
-      box-shadow: 0 6px 24px rgba(0,113,227,0.42);
+    .score-badge-dot {
+      width: 8px; height: 8px;
+      background: var(--apple-blue);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
     }
-    .portal-btn svg { width: 18px; height: 18px; }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.3); }
+    }
+    .score-badge-text {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--link-blue-dark);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .score-number {
+      font-size: clamp(56px, 10vw, 96px);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: var(--white);
+      margin-bottom: 14px;
+    }
+    .score-number span {
+      font-size: 0.45em;
+      font-weight: 300;
+      letter-spacing: 0;
+      color: rgba(255,255,255,0.5);
+      vertical-align: middle;
+      margin-left: 6px;
+    }
+    .score-desc {
+      font-size: 18px;
+      font-weight: 300;
+```html
+line-height: 1.5;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: -0.2px;
+    }
+    .score-desc strong {
+      font-weight: 600;
+      color: rgba(255,255,255,0.92);
+    }
+
+    /* ── TESTS SECTION ── */
+    .tests-section {
+      background: var(--light-bg);
+      padding: 100px 24px;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .section-eyebrow {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--apple-blue);
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-size: clamp(32px, 4.5vw, 48px);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--near-black);
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--body-text);
+      letter-spacing: -0.374px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .tests-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 14px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    .test-card {
+      background: var(--white);
+      border-radius: 18px;
+      box-shadow: var(--card-shadow);
+      padding: 28px 18px 22px;
+      text-align: center;
+      text-decoration: none;
+      color: var(--near-black);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .test-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--apple-blue), #60b8ff);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .test-card:hover {
+      transform: translateY(-4px);
+```html
+box-shadow: rgba(0,0,0,0.18) 4px 12px 40px 0px;
+    }
+    .test-card:hover::before { opacity: 1; }
+    .test-num {
+      font-size: 34px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: var(--near-black);
+      line-height: 1;
+    }
+    .test-label {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.45);
+    }
+    .test-start {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--apple-blue);
+      letter-spacing: -0.1px;
+      margin-top: 6px;
+    }
+    .test-start svg {
+      width: 12px; height: 12px;
+      transition: transform 0.2s;
+    }
+    .test-card:hover .test-start svg { transform: translateX(3px); }
+
+    /* ── PORTAL SECTION ── */
+    .portal-section {
+      background: var(--black);
+      padding: 110px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .portal-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 55% at 50% 50%, rgba(0,113,227,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .portal-icon {
+      width: 72px; height: 72px;
+      background: rgba(0,113,227,0.15);
+      border: 1px solid rgba(0,113,227,0.3);
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 32px;
+    }
+    .portal-icon svg {
+      width: 34px; height: 34px;
+      color: var(--link-blue-dark);
+    }
+    .portal-title {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 700;
+      line-height: 1.07;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      margin-bottom: 20px;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .portal-desc {
+      font-size: 19px;
+      font-weight: 300;
+      line-height: 1.55;
+```html
+letter-spacing: -0.3px;
+      color: rgba(255,255,255,0.65);
+      max-width: 560px;
+      margin: 0 auto 44px;
+    }
+    .portal-desc strong {
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+    }
+    .portal-features {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 48px;
+    }
+    .portal-tag {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 980px;
+      padding: 7px 18px;
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: -0.1px;
+    }
 
     /* ── FOOTER ── */
     footer {
+      background: var(--near-black);
+      padding: 48px 24px;
       text-align: center;
-      padding: 32px 24px;
-      font-size: 13px; color: var(--secondary);
-      border-top: 1px solid rgba(0,0,0,0.08);
     }
+    .footer-text {
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: -0.1px;
+      line-height: 1.6;
+    }
+    .footer-text a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+    }
+    .footer-text a:hover { color: rgba(255,255,255,0.85); }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 600px) {
-      .hero { padding: 60px 24px 40px; }
-      .portal-card { padding: 36px 28px; }
-      .score-card { flex-direction: column; text-align: center; gap: 10px; }
-      .grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+    @media (max-width: 640px) {
+      .score-card { padding: 36px 28px; }
+      .tests-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; }
+      .hero-cta-group { flex-direction: column; align-items: center; }
+      .nav { padding: 0 20px; }
     }
   </style>
 </head>
@@ -232,131 +440,148 @@
 
   <!-- NAV -->
   <nav>
-    <span>GRE Verbal · 송종옥</span>
+    <a class="nav-brand" href="#">Song Verbal</a>
+    <a class="nav-link" href="https://songverbalportal.pages.dev/" target="_blank">수업 Portal →</a>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-badge">Free Mock Test</div>
-    <h1>GRE Verbal<br /><span>무료 모의고사</span></h1>
-    <p>실전과 동일한 환경으로 구성된 GRE Verbal 모의고사입니다.<br />지금 바로 시작해 보세요.</p>
+    <p class="hero-eyebrow">Free Mock Test · 무료 모의고사</p>
+    <h1 class="hero-title">GRE Verbal<br><span>무료 모의고사</span></h1>
+    <p class="hero-sub">실전과 동일한 환경으로 구성된 GRE Verbal 모의고사입니다.<br>지금 바로 시작해 보세요.</p>
+    <div class="hero-cta-group">
+      <a href="#tests" class="btn-primary">모의고사 시작하기</a>
+```html
+<a href="https://songverbalportal.pages.dev/" target="_blank" class="btn-outline">수업 Portal 바로가기</a>
+    </div>
   </section>
 
   <!-- SCORE BANNER -->
-  <div class="score-banner">
+  <section class="score-section">
     <div class="score-card">
-      <div class="score-icon">🏆</div>
-      <p><strong>Verbal 152점 이상</strong>이면<br />버벌 실전반 수강 자격이 됩니다.</p>
+      <div class="score-badge">
+        <span class="score-badge-dot"></span>
+        <span class="score-badge-text">수강 자격 기준</span>
+      </div>
+      <div class="score-number">152<span>이상</span></div>
+      <p class="score-desc">
+        Verbal <strong>152점 이상</strong>이면<br>
+        버벌 실전반 수강 자격이 됩니다.
+      </p>
     </div>
-  </div>
+  </section>
 
-  <!-- MOCK TEST GRID -->
-  <div class="grid-wrapper">
-    <p class="section-label">회차별 모의고사</p>
-    <div class="grid">
-
-      <a class="mock-btn" href="Verbal_Mock_27unru.html" target="_blank">
-        <div class="mock-num">27</div>
-        <div class="mock-label">회차</div>
-        <div class="mock-tag">START</div>
-      </a>
-
-      <a class="mock-btn" href="Verbal_Mock_28uocj.html" target="_blank">
-        <div class="mock-num">28</div>
-        <div class="mock-label">회차</div>
-        <div class="mock-tag">START</div>
-      </a>
-
-      <a class="mock-btn" href="Verbal_Mock_29zdfk.html" target="_blank">
-        <div class="mock-num">29</div>
-        <div class="mock-label">회차</div>
-        <div class="mock-tag">START</div>
-      </a>
-
-      <a class="mock-btn" href="Verbal_Mock_30gywf.html" target="_blank">
-        <div class="mock-num">30</div>
-        <div class="mock-label">회차</div>
-        <div class="mock-tag">START</div>
-      </a>
-
-      <a class="mock-btn" href="Verbal_Mock_31eanh.html" target="_blank">
-        <div class="mock-num">31</div>
-        <div class="mock-label">회차</div>
-        <div class="mock-tag">START</div>
-      </a>
-
-      <a class="mock-btn" href="Verbal_Mock_32srar.html" target="_blank">
-        <div class="mock-num">32</div>
-        <div class="mock-label">회차</div>
-        <div class="mock-tag">START</div>
-      </a>
-
-      <a class="mock-btn" href="Verbal_Mock_33naof.html" target="_blank">
-        <div class="mock-num">33</div>
-        <div class="mock-label">회차</div>
-        <div class="mock-tag">START</div>
-      </a>
-
-      <a class="mock-btn" href="Verbal_Mock_34ztbd.html" target="_blank">
-        <div class="mock-num">34</div>
-        <div class="mock-label">회차</div>
-        <div class="mock-tag">START</div>
-      </a>
-
-      <a class="mock-btn" href="Verbal_Mock_35qshw.html" target="_blank">
-        <div class="mock-num">35</div>
-        <div class="mock-label">회차</div>
-        <div class="mock-tag">START</div>
-      </a>
-
-      <a class="mock-btn" href="Verbal_Mock_36pedf.html" target="_blank">
-        <div class="mock-num">36</div>
-        <div class="mock-label">회차</div>
-        <div class="mock-tag">START</div>
-      </a>
-
-      <a class="mock-btn" href="Verbal_Mock_37xmun.html" target="_blank">
-        <div class="mock-num">37</div>
-        <div class="mock-label">회차</div>
-        <div class="mock-tag">START</div>
-      </a>
-
-      <a class="mock-btn" href="Verbal_Mock_38wgpx.html" target="_blank">
-        <div class="mock-num">38</div>
-        <div class="mock-label">회차</div>
-        <div class="mock-tag">START</div>
-      </a>
-
-      <a class="mock-btn" href="Verbal_Mock_39bcra.html" target="_blank">
-        <div class="mock-num">39</div>
-        <div class="mock-label">회차</div>
-        <div class="mock-tag">START</div>
-      </a>
-
+  <!-- TESTS GRID -->
+  <section class="tests-section" id="tests">
+    <div class="section-header">
+      <p class="section-eyebrow">회차별 모의고사</p>
+      <h2 class="section-title">지금 바로 응시하세요</h2>
+      <p class="section-sub">27회차부터 39회차까지 — 총 13회분의 모의고사가 준비되어 있습니다.</p>
     </div>
-  </div>
 
-  <!-- DIVIDER -->
-  <div class="divider"><hr /></div>
+    <div class="tests-grid">
+      <a class="test-card" href="Verbal_Mock_27unru.html">
+        <div class="test-num">27</div>
+        <div class="test-label">회차</div>
+        <div class="test-start">START <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg></div>
+      </a>
+      <a class="test-card" href="Verbal_Mock_28uocj.html">
+        <div class="test-num">28</div>
+        <div class="test-label">회차</div>
+        <div class="test-start">START <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg></div>
+      </a>
+      <a class="test-card" href="Verbal_Mock_29zdfk.html">
+        <div class="test-num">29</div>
+        <div class="test-label">회차</div>
+        <div class="test-start">START <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg></div>
+      </a>
+      <a class="test-card" href="Verbal_Mock_30gywf.html">
+        <div class="test-num">30</div>
+        <div class="test-label">회차</div>
+```html
+<div class="test-start">START <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg></div>
+      </a>
+      <a class="test-card" href="Verbal_Mock_31eanh.html">
+        <div class="test-num">31</div>
+        <div class="test-label">회차</div>
+        <div class="test-start">START <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg></div>
+      </a>
+      <a class="test-card" href="Verbal_Mock_32srar.html">
+        <div class="test-num">32</div>
+        <div class="test-label">회차</div>
+        <div class="test-start">START <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg></div>
+      </a>
+      <a class="test-card" href="Verbal_Mock_33naof.html">
+        <div class="test-num">33</div>
+        <div class="test-label">회차</div>
+        <div class="test-start">START <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg></div>
+      </a>
+      <a class="test-card" href="Verbal_Mock_34ztbd.html">
+        <div class="test-num">34</div>
+        <div class="test-label">회차</div>
+        <div class="test-start">START <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg></div>
+      </a>
+      <a class="test-card" href="Verbal_Mock_35qshw.html">
+        <div class="test-num">35</div>
+        <div class="test-label">회차</div>
+        <div class="test-start">START <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg></div>
+      </a>
+      <a class="test-card" href="Verbal_Mock_36pedf.html">
+        <div class="test-num">36</div>
+        <div class="test-label">회차</div>
+        ```html
+<div class="test-start">START <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg></div>
+      </a>
+      <a class="test-card" href="Verbal_Mock_37xmun.html">
+        <div class="test-num">37</div>
+        <div class="test-label">회차</div>
+        <div class="test-start">START <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg></div>
+      </a>
+      <a class="test-card" href="Verbal_Mock_38wgpx.html">
+        <div class="test-num">38</div>
+        <div class="test-label">회차</div>
+        <div class="test-start">START <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg></div>
+      </a>
+      <a class="test-card" href="Verbal_Mock_39bcra.html">
+        <div class="test-num">39</div>
+        <div class="test-label">회차</div>
+        <div class="test-start">START <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg></div>
+      </a>
+    </div>
+  </section>
 
   <!-- PORTAL -->
   <section class="portal-section">
-    <div class="portal-card">
-      <div class="portal-icon">📚</div>
-      <h2>송종옥샘 Verbal 수업 Portal</h2>
-      <p>GRE Verbal을 준비하기 위한<br /><strong>모든 자료</strong>가 있습니다.</p>
-      <a class="portal-btn" href="https://songverbalportal.pages.dev/" target="_blank">
-        Portal 바로가기
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
-      </a>
+    <div class="portal-icon">
+      <svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M17 3 C9.3 3 3 9.3 3 17s6.3 14 14 14 14-6.3 14-14S24.7 3 17 3z"/>
+        <path d="M3 17h28M17 3c-3.9 4.5-6.1 9.1-6.1 14s2.2 9.5 6.1 14M17 3c3.9 4.5 6.1 9.1 6.1 14S20.9 31.5 17 31"/>
+      </svg>
     </div>
+    <h2 class="portal-title">송종옥샘 Verbal<br>수업 Portal</h2>
+    <p class="portal-desc">
+      GRE Verbal을 준비하기 위한<br>
+      <strong>모든 자료</strong>가 있습니다.
+    </p>
+    <div class="portal-features">
+      <span class="portal-tag">단어 학습</span>
+      <span class="portal-tag">문제 풀이 전략</span>
+      <span class="portal-tag">강의 자료</span>
+      <span class="portal-tag">실전 대비</span>
+      <span class="portal-tag">점수 향상 가이드</span>
+```html
+</div>
+    <a href="https://songverbalportal.pages.dev/" target="_blank" class="btn-primary" style="font-size:18px; padding:14px 34px;">
+      Portal 바로가기 →
+    </a>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    © 2025 송종옥 GRE Verbal · All rights reserved.
+    <p class="footer-text">
+      © 2026 송종옥 GRE Verbal · All rights reserved<br>
+      <a href="https://songverbalportal.pages.dev/" target="_blank">songverbalportal.pages.dev</a>
+    </p>
   </footer>
 
 </body>
