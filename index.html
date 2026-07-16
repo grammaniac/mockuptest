@@ -6,14 +6,14 @@
   <title>GRE Verbal 무료 모의고사 | 송종옥샘</title>
 
   <!-- SEO 메타태그 -->
-  <meta name="description" content="송종옥샘의 GRE Verbal 무료 모의고사. 실전과 동일한 환경의 27~39회차 모의고사를 무료로 응시하세요. Verbal 152점 이상이면 실전반 수강 가능.">
+  <meta name="description" content="송종옥샘의 GRE Verbal 무료 모의고사. 최신 38회와 39회 모의고사를 실전과 동일한 환경에서 무료로 응시하세요. Verbal 152점 이상이면 실전반 수강 가능.">
   <meta name="keywords" content="GRE 모의고사, GRE Verbal, GRE 무료 모의고사, GRE 시험, GRE 준비, 송종옥, Verbal 실전반">
   <meta name="author" content="송종옥">
   <meta name="robots" content="index, follow">
 
   <!-- Open Graph (카카오톡/SNS 공유시 미리보기) -->
   <meta property="og:title" content="GRE Verbal 무료 모의고사 | 송종옥샘">
-  <meta property="og:description" content="실전과 동일한 환경의 GRE Verbal 무료 모의고사 27~39회차. 지금 바로 시작하세요.">
+  <meta property="og:description" content="실전과 동일한 환경의 GRE Verbal 무료 모의고사 38회와 39회. 최신 39회부터 시작하세요.">
   <meta property="og:url" content="https://grammaniac.github.io/mockuptest/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ko_KR">
@@ -275,9 +275,9 @@
 
     .tests-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 14px;
-      max-width: 980px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      max-width: 600px;
       margin: 0 auto;
     }
     .test-card {
@@ -311,6 +311,23 @@
       box-shadow: rgba(0,0,0,0.18) 4px 12px 40px 0px;
     }
     .test-card:hover::before { opacity: 1; }
+    .test-card.recommended {
+      border: 1px solid rgba(0,113,227,0.3);
+      padding-top: 36px;
+    }
+    .test-card.recommended::before { opacity: 1; }
+    .recommend-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      border-radius: 980px;
+      background: rgba(0,113,227,0.1);
+      color: var(--apple-blue);
+      padding: 5px 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
     .test-num {
       font-size: 34px;
       font-weight: 700;
@@ -434,7 +451,7 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
       .score-card { padding: 36px 28px; }
-      .tests-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; }
+      .tests-grid { grid-template-columns: 1fr; gap: 14px; max-width: 320px; }
       .hero-cta-group { flex-direction: column; align-items: center; }
       .nav { padding: 0 20px; }
     }
@@ -445,7 +462,7 @@
   <!-- NAV -->
   <nav>
     <a class="nav-brand" href="#">Song Verbal</a>
-    <a class="nav-link" href="https://songverbalportal.pages.dev/" target="_blank">수업 Portal →</a>
+    <a class="nav-link" href="https://songverbalportal.pages.dev/" target="_blank" rel="noopener">수업 Portal →</a>
   </nav>
 
   <!-- HERO -->
@@ -455,7 +472,7 @@
     <p class="hero-sub">실전과 동일한 환경으로 구성된 GRE Verbal 모의고사입니다.<br>지금 바로 시작해 보세요.</p>
     <div class="hero-cta-group">
       <a href="#tests" class="btn-primary">모의고사 시작하기</a>
-      <a href="https://songverbalportal.pages.dev/" target="_blank" class="btn-outline">수업 Portal 바로가기</a>
+      <a href="https://songverbalportal.pages.dev/" target="_blank" rel="noopener" class="btn-outline">수업 Portal 바로가기</a>
     </div>
   </section>
 
@@ -479,71 +496,17 @@
     <div class="section-header">
       <p class="section-eyebrow">회차별 모의고사</p>
       <h2 class="section-title">지금 바로 응시하세요</h2>
-      <p class="section-sub">27회차부터 39회차까지 — 총 13회분의 모의고사가 준비되어 있습니다.</p>
+      <p class="section-sub">최신 39회 응시를 추천합니다. 38회도 함께 선택할 수 있습니다.</p>
     </div>
 
     <div class="tests-grid">
-      <a class="test-card" href="Verbal_Mock_27unru.html">
-        <div class="test-num">27</div>
-        <div class="test-label">회차</div>
-        <div class="test-start">START <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg></div>
-      </a>
-      <a class="test-card" href="Verbal_Mock_28uocj.html">
-        <div class="test-num">28</div>
-        <div class="test-label">회차</div>
-        <div class="test-start">START <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg></div>
-      </a>
-      <a class="test-card" href="Verbal_Mock_29zdfk.html">
-        <div class="test-num">29</div>
-        <div class="test-label">회차</div>
-        <div class="test-start">START <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg></div>
-      </a>
-      <a class="test-card" href="Verbal_Mock_30gywf.html">
-        <div class="test-num">30</div>
-        <div class="test-label">회차</div>
-        <div class="test-start">START <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg></div>
-      </a>
-      <a class="test-card" href="Verbal_Mock_31eanh.html">
-        <div class="test-num">31</div>
-        <div class="test-label">회차</div>
-        <div class="test-start">START <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg></div>
-      </a>
-      <a class="test-card" href="Verbal_Mock_32srar.html">
-        <div class="test-num">32</div>
-        <div class="test-label">회차</div>
-        <div class="test-start">START <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg></div>
-      </a>
-      <a class="test-card" href="Verbal_Mock_33naof.html">
-        <div class="test-num">33</div>
-        <div class="test-label">회차</div>
-        <div class="test-start">START <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg></div>
-      </a>
-      <a class="test-card" href="Verbal_Mock_34ztbd.html">
-        <div class="test-num">34</div>
-        <div class="test-label">회차</div>
-        <div class="test-start">START <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg></div>
-      </a>
-      <a class="test-card" href="Verbal_Mock_35qshw.html">
-        <div class="test-num">35</div>
-        <div class="test-label">회차</div>
-        <div class="test-start">START <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg></div>
-      </a>
-      <a class="test-card" href="Verbal_Mock_36pedf.html">
-        <div class="test-num">36</div>
-        <div class="test-label">회차</div>
-        <div class="test-start">START <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg></div>
-      </a>
-      <a class="test-card" href="Verbal_Mock_37xmun.html">
-        <div class="test-num">37</div>
-        <div class="test-label">회차</div>
-        <div class="test-start">START <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg></div>
-      </a>
       <a class="test-card" href="Verbal_Mock_38wgpx.html">
         <div class="test-num">38</div>
         <div class="test-label">회차</div>
         <div class="test-start">START <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg></div>
       </a>
-      <a class="test-card" href="Verbal_Mock_39bcra.html">
+      <a class="test-card recommended" href="Verbal_Mock_39bcra.html" aria-label="추천 최신 모의고사 39회">
+        <span class="recommend-badge">최신 · 추천</span>
         <div class="test-num">39</div>
         <div class="test-label">회차</div>
         <div class="test-start">START <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M6 2l4 4-4 4"/></svg></div>
@@ -571,7 +534,7 @@
       <span class="portal-tag">실전 대비</span>
       <span class="portal-tag">점수 향상 가이드</span>
     </div>
-    <a href="https://songverbalportal.pages.dev/" target="_blank" class="btn-primary" style="font-size:18px; padding:14px 34px;">
+    <a href="https://songverbalportal.pages.dev/" target="_blank" rel="noopener" class="btn-primary" style="font-size:18px; padding:14px 34px;">
       Portal 바로가기 →
     </a>
   </section>
@@ -580,7 +543,7 @@
   <footer>
     <p class="footer-text">
       © 2026 송종옥 GRE Verbal · All rights reserved<br>
-      <a href="https://songverbalportal.pages.dev/" target="_blank">songverbalportal.pages.dev</a>
+      <a href="https://songverbalportal.pages.dev/" target="_blank" rel="noopener">songverbalportal.pages.dev</a>
     </p>
   </footer>
 

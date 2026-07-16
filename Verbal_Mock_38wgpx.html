@@ -636,9 +636,38 @@
     text-align: center;
     margin-top: 40px;
     display: flex;
+    flex-wrap: wrap;
     gap: 12px;
     justify-content: center;
   }
+  .results-help {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    margin-top: 24px;
+    padding: 28px;
+    text-align: center;
+    box-shadow: var(--shadow);
+  }
+  .results-help h3 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .results-help p {
+    color: var(--ink-soft);
+    font-family: -apple-system, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+  .results-help-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  .results-help-links .btn { text-decoration: none; }
 
   @media (max-width: 860px) {
     .layout-rc { grid-template-columns: 1fr; }
@@ -2278,7 +2307,17 @@ function renderResults(app) {
       <div class="results-actions">
         <button class="btn" onclick="window.print()">결과 인쇄</button>
         <button class="btn btn-primary" onclick="location.reload()">다시 풀기</button>
+        <a class="btn" href="index.html">모의고사 목록으로</a>
       </div>
+
+      <aside class="results-help" aria-labelledby="results-help-title">
+        <h3 id="results-help-title">해설 및 수업 안내</h3>
+        <p>문제 해설이나 수업 안내가 필요한 학생은 아래에서 원하는 채널을 클릭해 주세요.</p>
+        <div class="results-help-links">
+          <a class="btn btn-primary" href="https://open.kakao.com/o/s0ifxj1f" target="_blank" rel="noopener">Kakao Open Chat</a>
+          <a class="btn" href="https://songverbalportal.pages.dev/" target="_blank" rel="noopener">Song Verbal Portal</a>
+        </div>
+      </aside>
     </main>
   `;
 }
