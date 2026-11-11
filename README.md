@@ -1,15 +1,19 @@
 # GRE Verbal Mock Tests
 
-송종옥 GRE Verbal 모의고사를 제공하는 정적 웹사이트입니다. 랜딩 페이지에는 최신 두 회차인 38회와 39회만 표시하며, 가장 최신인 39회를 추천 응시 회차로 안내합니다. 이전 회차의 HTML 파일은 보관되어 있지만 랜딩 페이지에는 노출하지 않습니다.
+송종옥 GRE Verbal 무료 모의고사를 제공하는 정적 웹사이트입니다(GitHub Pages).
 
-시험 완료 후 결과 화면에서 문제 해설과 수업 안내를 위한 다음 두 곳으로 이동할 수 있습니다.
+- 대문(`index.html`)에 무료 모의고사 네 회분(`Verbal_Mock_Free_1.html` ~ `Verbal_Mock_Free_4.html`)을 싣습니다.
+- 한 회분은 27문항 · 41분(Section 1 12문항 18분 + Section 2 15문항 23분)이고, 채점 뒤 문항별 해설이 열립니다.
+- 회차 파일은 검색엔진 색인을 막아 두었고(noindex), 대문만 색인됩니다.
+- 2026-11-12: 옛 38회·39회(해설 없음)를 삭제하고 네 회분으로 교체했습니다. 그 이전 회차(17~37회) HTML은 대문에 노출하지 않은 채 보관돼 있습니다.
 
-- [Kakao Open Chat](https://open.kakao.com/o/s0ifxj1f)
-- [Song Verbal Portal](https://songverbalportal.pages.dev/)
+GRE Verbal 정보와 수업 안내는 [greverbal.com](https://greverbal.com/)에 있습니다. 문의는 [카카오톡 오픈채팅](https://open.kakao.com/o/s0ifxj1f)으로 받습니다.
+
+## 회차 파일 만드는 곳
+
+회차 HTML은 이 저장소에서 직접 고치지 않습니다. 생성기(`GRE_MockTest_Project_Frequencies/생성기_v2/select_pub.py` → `build_pub.py`)가 만든 파일을 복사해 넣습니다.
 
 ## 로컬 미리보기
-
-프로젝트 루트에서 아래 명령을 실행한 뒤 `http://localhost:8000/`을 엽니다.
 
 ```sh
 python3 -m http.server 8000
